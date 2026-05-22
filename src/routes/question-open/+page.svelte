@@ -1,4 +1,6 @@
 <script lang="ts">
+	import { asset } from '$app/paths';
+
 	const question = {
 		category: 'History',
 		difficulty: 'Hard',
@@ -9,11 +11,11 @@
 </script>
 
 <!-- Decorative accents -->
-<img src="/images/burst-teal.png"    alt="" aria-hidden="true" class="absolute -top-16 -left-16 h-56 w-56 opacity-80" />
-<img src="/images/burst-orange.png"  alt="" aria-hidden="true" class="absolute -bottom-16 -right-16 h-56 w-56 opacity-80" />
-<img src="/images/star-yellow.png"   alt="" aria-hidden="true" class="absolute top-8 right-16 h-10 w-10 rotate-12 opacity-90" />
-<img src="/images/star-magenta.png"  alt="" aria-hidden="true" class="absolute bottom-12 left-16 h-8 w-8 -rotate-6 opacity-80" />
-<img src="/images/star-teal.png"     alt="" aria-hidden="true" class="absolute top-1/3 right-8 h-7 w-7 rotate-30 opacity-70" />
+<img src={asset('/images/burst-teal.png')}    alt="" aria-hidden="true" class="absolute -top-16 -left-16 h-56 w-56 opacity-80" />
+<img src={asset('/images/burst-orange.png')}  alt="" aria-hidden="true" class="absolute -bottom-16 -right-16 h-56 w-56 opacity-80" />
+<img src={asset('/images/star-yellow.png')}   alt="" aria-hidden="true" class="absolute top-8 right-16 h-10 w-10 rotate-12 opacity-90" />
+<img src={asset('/images/star-magenta.png')}  alt="" aria-hidden="true" class="absolute bottom-12 left-16 h-8 w-8 -rotate-6 opacity-80" />
+<img src={asset('/images/star-teal.png')}     alt="" aria-hidden="true" class="absolute top-1/3 right-8 h-7 w-7 rotate-30 opacity-70" />
 
 <!-- Content -->
 <div class="relative z-10 flex h-full flex-col items-center justify-center gap-5 overflow-y-auto px-5 py-8">

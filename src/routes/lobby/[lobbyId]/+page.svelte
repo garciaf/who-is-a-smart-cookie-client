@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { page } from '$app/state';
+	import { asset } from '$app/paths';
 
 	const lobbyId = page.params.lobbyId;
 	let name = $state('');
@@ -11,11 +12,11 @@
 </script>
 
 	<!-- Corner accents -->
-	<img src="/images/burst-teal.png"    alt="" aria-hidden="true" class="absolute -top-16 -left-16 h-56 w-56 opacity-80" />
-	<img src="/images/burst-magenta.png" alt="" aria-hidden="true" class="absolute -bottom-12 -right-12 h-56 w-56 opacity-80" />
-	<img src="/images/star-yellow.png"   alt="" aria-hidden="true" class="absolute top-8 right-16 h-10 w-10 rotate-12 opacity-90" />
-	<img src="/images/star-orange.png"   alt="" aria-hidden="true" class="absolute bottom-12 left-16 h-8 w-8 -rotate-6 opacity-80" />
-	<img src="/images/star-teal.png"     alt="" aria-hidden="true" class="absolute top-1/4 right-8 h-7 w-7 rotate-30 opacity-70" />
+	<img src={asset('/images/burst-teal.png')}    alt="" aria-hidden="true" class="absolute -top-16 -left-16 h-56 w-56 opacity-80" />
+	<img src={asset('/images/burst-magenta.png')} alt="" aria-hidden="true" class="absolute -bottom-12 -right-12 h-56 w-56 opacity-80" />
+	<img src={asset('/images/star-yellow.png')}   alt="" aria-hidden="true" class="absolute top-8 right-16 h-10 w-10 rotate-12 opacity-90" />
+	<img src={asset('/images/star-orange.png')}   alt="" aria-hidden="true" class="absolute bottom-12 left-16 h-8 w-8 -rotate-6 opacity-80" />
+	<img src={asset('/images/star-teal.png')}     alt="" aria-hidden="true" class="absolute top-1/4 right-8 h-7 w-7 rotate-30 opacity-70" />
 
 	<!-- Center card -->
 	<div class="relative z-10 flex h-full items-center justify-center px-4">
@@ -24,7 +25,7 @@
 			<!-- Cookie icon -->
 			<div class="mb-4 flex justify-center">
 				<img
-					src="/images/cookie-64-64px.png"
+					src={asset('/images/cookie-64-64px.png')}
 					alt="Cookie"
 					class="pixel-perfect h-16 w-16 drop-shadow-[0_4px_0_#7a3a14]"
 				/>
@@ -35,11 +36,11 @@
 				LOBBY
 			</p>
 			<div class="mb-8 flex items-center justify-center gap-3">
-				<img src="/images/star-yellow.png" alt="" aria-hidden="true" class="pixel-perfect h-6 w-6" />
+				<img src={asset('/images/star-yellow.png')} alt="" aria-hidden="true" class="pixel-perfect h-6 w-6" />
 				<span class="font-monoton text-2xl tracking-widest text-game-yellow drop-shadow-[0_2px_0_#8a7000]">
 					{lobbyId}
 				</span>
-				<img src="/images/star-yellow.png" alt="" aria-hidden="true" class="pixel-perfect h-6 w-6" />
+				<img src={asset('/images/star-yellow.png')} alt="" aria-hidden="true" class="pixel-perfect h-6 w-6" />
 			</div>
 
 			<!-- Divider -->

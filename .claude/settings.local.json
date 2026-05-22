@@ -9,7 +9,8 @@
       "Bash(grep -E \"^nvm$|^fnm$|^volta$|^node@\")",
       "Bash(curl -sf http://localhost:5173)",
       "Bash(node screenshot.mjs)",
-      "Bash(kill 13669)"
+      "Bash(kill 13669)",
+      "mcp__svelte__get-documentation"
     ]
   }
 }
