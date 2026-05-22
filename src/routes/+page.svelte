@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { asset } from '$app/paths';
+	import { asset, resolve } from '$app/paths';
 </script>
 
 	<!-- Corner burst accents -->
@@ -78,7 +78,7 @@
 		</h1>
 
 		<a
-			href="/join"
+			href={resolve('/join')}
 			class="mt-6 cursor-pointer rounded-full bg-magenta px-10 py-4 font-paytone text-2xl text-cream shadow-[0_6px_0_#7a003d] transition-transform hover:brightness-110 active:translate-y-1 active:shadow-[0_2px_0_#7a003d]"
 		>
 			PLAY NOW
