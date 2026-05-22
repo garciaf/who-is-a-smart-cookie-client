@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm --version)",
+      "Bash(command -v nvm)",
+      "Bash(command -v fnm)",
+      "Bash(command -v volta)",
+      "Bash(brew list *)",
+      "Bash(grep -E \"^nvm$|^fnm$|^volta$|^node@\")",
+      "Bash(curl -sf http://localhost:5173)",
+      "Bash(node screenshot.mjs)",
+      "Bash(kill 13669)"
+    ]
+  }
+}
