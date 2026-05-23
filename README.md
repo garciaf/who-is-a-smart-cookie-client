@@ -4,9 +4,9 @@ A mobile-first trivia game show built with SvelteKit.
 
 ## Screens
 
-| Home | Lobby | Multiple Choice | Open Answer |
-|------|-------|-----------------|-------------|
-| ![Home](docs/home.png) | ![Lobby](docs/lobby.png) | ![Multiple Choice](docs/question.png) | ![Open Answer](docs/question-open.png) |
+| Home | Lobby | Multiple Choice | Open Answer | Betting |
+|------|-------|-----------------|-------------|---------|
+| ![Home](docs/home.png) | ![Lobby](docs/lobby.png) | ![Multiple Choice](docs/question.png) | ![Open Answer](docs/question-open.png) | ![Betting](docs/bet.png) |
 
 ## Creating a project
 
