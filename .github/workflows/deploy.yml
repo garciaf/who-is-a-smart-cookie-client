@@ -23,6 +23,7 @@ jobs:
       - name: build
         env:
           BASE_PATH: '/${{ github.event.repository.name }}'
+          VITE_WEBSOCKET_URL: 'https://game-lobby-server.fly.dev/'
         run: |
           npm run build
 
