@@ -1,6 +1,7 @@
 <script lang="ts">
 	import './layout.css';
 	import { asset } from '$app/paths';
+	import '$lib/liveNavigation';
 
 	let { children } = $props();
 </script>

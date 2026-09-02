@@ -1,13 +1,16 @@
 <script lang="ts">
 	import { asset } from '$app/paths';
-
-	const question = {
-		category: 'History',
-		difficulty: 'Hard',
-		text: 'Describe the main causes of the First World War.',
-	};
+	import socket from '$lib/socket';
+	import { questionStore } from '$lib/stores/player';
 
 	let answer = $state('');
+
+	function validate(event: Event) {
+		event.preventDefault();
+		if (!answer.trim()) return;
+		socket?.emit('submit-answer', { answer: answer });
+		answer = '';
+	}
 </script>
 
 <!-- Decorative accents -->
@@ -23,15 +26,15 @@
 	<!-- Question panel -->
 	<div class="w-full max-w-lg rounded-3xl bg-cream px-6 py-6 shadow-[0_6px_0_#8a7000] sm:max-w-2xl">
 		<p class="mb-3 text-center font-limelight text-base tracking-[0.2em] text-magenta uppercase">
-			{question.category} &bull; {question.difficulty}
+			{$questionStore.category} &bull; {$questionStore.difficulty}
 		</p>
 		<p class="text-center font-boogaloo text-3xl leading-snug text-navy">
-			{question.text}
+			{$questionStore.text}
 		</p>
 	</div>
 
 	<!-- Answer area -->
-	<div class="flex w-full max-w-lg flex-col sm:max-w-2xl">
+	<form onsubmit={validate} class="flex w-full max-w-lg flex-col sm:max-w-2xl">
 		<textarea
 			bind:value={answer}
 			placeholder="Give your answer here..."
@@ -39,11 +42,12 @@
 			class="w-full resize-none rounded-t-2xl border-4 border-b-2 border-game-yellow bg-navy px-5 py-4 font-boogaloo text-2xl leading-snug text-game-yellow outline-none placeholder:text-game-yellow/40 [field-sizing:content]"
 		></textarea>
 		<button
+			type="submit"
 			disabled={!answer.trim()}
 			class="w-full rounded-b-2xl bg-game-green py-5 font-paytone text-2xl text-cream shadow-[0_4px_0_#1a6638] transition-all hover:brightness-110 active:translate-y-1 active:shadow-[0_1px_0_#1a6638] disabled:cursor-not-allowed disabled:bg-gray disabled:shadow-[0_4px_0_#4a4a5e] disabled:translate-y-0"
 		>
 			VALIDATE
 		</button>
-	</div>
+	</form>
 
 </div>

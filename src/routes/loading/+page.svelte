@@ -1,7 +1,6 @@
 <script lang="ts">
 	import { asset } from '$app/paths';
-
-	const message = 'Look at the screen!';
+	import { loadingMessage } from '$lib/stores/player';
 </script>
 
 <!-- Corner accents -->
@@ -33,7 +32,7 @@
 
 		<!-- Message -->
 		<p class="font-boogaloo text-4xl leading-snug text-cream drop-shadow-[0_2px_0_#1a1a3e] sm:text-5xl">
-			{message}
+			{$loadingMessage.message}
 		</p>
 
 	</div>

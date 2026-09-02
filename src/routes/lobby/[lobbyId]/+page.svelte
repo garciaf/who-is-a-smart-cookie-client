@@ -1,13 +1,28 @@
 <script lang="ts">
 	import { page } from '$app/state';
 	import { asset } from '$app/paths';
+	import socket from '$lib/socket';
+	import { playerStore } from '$lib/stores/player';
 
-	const lobbyId = page.params.lobbyId;
+	const lobbyId = page.params.lobbyId ?? '';
 	let name = $state('');
+	
+	socket?.on('joined-lobby', (data) => {
+		const { lobbyId: joinedLobbyId, clientId } = data as { lobbyId: string; clientId: string };
 
+		playerStore.update(state => ({...state, lobbyId: joinedLobbyId, id: clientId, name}));
+
+		if (socket) {
+			socket.emit('new-player', {
+				name: name,
+			});
+		}
+	});
+	
 	function joinLobby(event: Event) {
 		event.preventDefault();
-		// socket logic comes later
+		playerStore.update((s) => ({ ...s, name, lobbyId }));
+		socket?.emit('join-lobby', { lobbyId, name });
 	}
 </script>
 

@@ -1,12 +1,15 @@
 <script lang="ts">
 	import { asset } from '$app/paths';
+	import socket from '$lib/socket';
+	import { playerStore } from '$lib/stores/player';
 
 	let code = $state('');
 	let name = $state('');
 
 	function joinLobby(event: Event) {
 		event.preventDefault();
-		// socket logic comes later
+		playerStore.update((s) => ({ ...s, name, lobbyId: code }));
+		socket?.emit('join-lobby', { lobbyId: code, name });
 	}
 </script>
 

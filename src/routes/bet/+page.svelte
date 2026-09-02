@@ -1,16 +1,22 @@
 <script lang="ts">
 	import { asset } from '$app/paths';
+	import socket from '$lib/socket';
+	import { playerStore, gameStore } from '$lib/stores/player';
 
-	const players = ['Alice', 'Fab', 'Sonja', 'Dave'];
 	const presets = [1, 2, 3, 4];
-	const balance = 8;
 
 	let selectedPlayer = $state<string | null>(null);
 	let bet = $state<number | null>(null);
 
 	function placeBet(event: Event) {
 		event.preventDefault();
-		// logic comes later
+		if (!selectedPlayer || !bet) return;
+		socket?.emit('place-bet', { player: selectedPlayer, amount: bet });
+	}
+
+	function skipBet(event: Event) {
+		event.preventDefault();
+		socket?.emit('place-bet', { player: null, amount: null });
 	}
 </script>
 
@@ -39,7 +45,7 @@
 		<div class="rounded-2xl border-2 border-game-yellow/40 bg-navy px-5 py-3 text-center">
 			<p class="font-limelight text-xs tracking-widest text-teal uppercase mb-1">Your balance</p>
 			<p class="font-monoton text-3xl text-game-yellow drop-shadow-[0_2px_0_#8a7000]">
-				{balance} <span class="font-boogaloo text-xl text-cream">pts</span>
+				{$playerStore.balance} <span class="font-boogaloo text-xl text-cream">pts</span>
 			</p>
 		</div>
 
@@ -49,18 +55,18 @@
 		<div class="flex flex-col gap-3">
 			<p class="text-center font-boogaloo text-xl text-cream">WHO DO YOU THINK IS THE SMART COOKIE?</p>
 			<div class="grid grid-cols-2 gap-3">
-				{#each players as player (player)}
+				{#each $gameStore.players as player (player.id)}
 					<button
 						type="button"
-						onclick={() => selectedPlayer = player}
+						onclick={() => selectedPlayer = player.id}
 						class={[
 							'rounded-2xl border-2 px-4 py-4 font-boogaloo text-xl transition-all',
-							selectedPlayer === player
+							selectedPlayer === player.id
 								? 'border-game-yellow bg-game-yellow/20 text-game-yellow shadow-[0_4px_0_#8a7000]'
 								: 'border-teal/40 bg-navy text-cream hover:border-teal hover:bg-teal/10'
 						].join(' ')}
 					>
-						{player}
+						{player.name}
 					</button>
 				{/each}
 			</div>
@@ -87,18 +93,6 @@
 					</button>
 				{/each}
 			</div>
-			<button
-				type="button"
-				onclick={() => bet = balance}
-				class={[
-					'w-full rounded-xl border-2 py-3 font-paytone text-lg transition-all',
-					bet === balance
-						? 'border-magenta bg-magenta/20 text-magenta shadow-[0_3px_0_#7a003d]'
-						: 'border-teal/40 bg-navy text-cream hover:border-teal hover:bg-teal/10'
-				].join(' ')}
-			>
-				ALL IN 🔥
-			</button>
 		</div>
 
 		<div class="h-px bg-gradient-to-r from-transparent via-game-yellow/40 to-transparent"></div>
@@ -114,6 +108,7 @@
 			</button>
 			<button
 				type="button"
+				onclick={skipBet}
 				class="w-full py-2 font-boogaloo text-lg text-teal/70 hover:text-teal transition-colors"
 			>
 				Skip — play it safe
