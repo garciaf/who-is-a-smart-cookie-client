@@ -2,6 +2,7 @@
 	import './layout.css';
 	import { asset } from '$app/paths';
 	import '$lib/liveNavigation';
+	import ConnectionBanner from '$lib/components/ConnectionBanner.svelte';
 
 	let { children } = $props();
 </script>
@@ -11,5 +12,6 @@
 <div class="relative h-screen w-screen overflow-hidden bg-navy">
 	<img src={asset('/images/sunburst-bg.png')} alt="" aria-hidden="true" class="absolute inset-0 h-full w-full object-cover" />
 	<img src={asset('/images/colorburst-rays.png')} alt="" aria-hidden="true" class="absolute inset-0 h-full w-full object-cover opacity-60 mix-blend-screen" />
+	<ConnectionBanner />
 	{@render children()}
 </div>

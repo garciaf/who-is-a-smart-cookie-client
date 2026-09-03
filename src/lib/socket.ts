@@ -16,6 +16,19 @@ class Socket {
 
 	constructor() {
 		this.connect();
+		this.watchVisibility();
+	}
+
+	// iOS Safari suspends the WebSocket when the tab is backgrounded (app switch,
+	// screen lock). socket.io's own backoff timer can be paused for the same reason,
+	// so force an immediate reconnect check as soon as the tab is visible again
+	// instead of waiting for the next scheduled retry.
+	private watchVisibility(): void {
+		document.addEventListener('visibilitychange', () => {
+			if (document.visibilityState === 'visible' && this.socket && !this.socket.connected) {
+				this.socket.connect();
+			}
+		});
 	}
 
 	private connect(): void {
