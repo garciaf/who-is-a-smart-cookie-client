@@ -11,6 +11,18 @@
 		playerStore.update((s) => ({ ...s, name, lobbyId: code }));
 		socket?.emit('join-lobby', { lobbyId: code, name });
 	}
+
+	socket?.on('joined-lobby', (data) => {
+		const { lobbyId: joinedLobbyId, clientId } = data as { lobbyId: string; clientId: string };
+
+		playerStore.update(state => ({...state, lobbyId: joinedLobbyId, id: clientId, name}));
+
+		if (socket) {
+			socket.emit('new-player', {
+				name: name,
+			});
+		}
+	});
 </script>
 
 <!-- Corner accents -->
