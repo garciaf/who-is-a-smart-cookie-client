@@ -23,7 +23,7 @@ class LiveNavigation {
 				difficulty?: string;
 				text?: string;
 				answers?: string[];
-				categories?: string[];
+				categories?: { label: string; difficulty: string }[];
 				players?: { id: string; name: string }[];
 			};
 
@@ -54,6 +54,12 @@ class LiveNavigation {
 				goto(resolve('/question-open'));
 			} else if (payload.screen === 'bet') {
 				gameStore.set({ players: payload.players || [] });
+				questionStore.set({
+					category: payload.category || '',
+					difficulty: payload.difficulty || '',
+					text: '',
+					answers: []
+				});
 				goto(resolve('/bet'));
 			}
 		});

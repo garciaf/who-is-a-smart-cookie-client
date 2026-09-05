@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { asset } from '$app/paths';
 	import socket from '$lib/socket';
-	import { playerStore, gameStore } from '$lib/stores/player';
+	import { playerStore, gameStore, questionStore } from '$lib/stores/player';
 
 	const presets = [1, 2, 3, 4];
 
@@ -28,7 +28,7 @@
 <img src={asset('/images/star-teal.png')}     alt="" aria-hidden="true" class="absolute top-1/3 right-6 h-7 w-7 rotate-30 opacity-70" />
 
 <!-- Scrollable wrapper -->
-<div class="relative z-10 flex h-full items-start justify-center overflow-y-auto px-4 py-6">
+<div class="relative z-10 flex h-full items-start justify-center overflow-y-auto px-4 pt-6 pb-[max(1.5rem,env(safe-area-inset-bottom))]">
 	<div class="w-full max-w-md rounded-3xl border-4 border-game-yellow bg-navy/90 px-8 py-10 shadow-[0_8px_0_#8a7000] backdrop-blur-sm flex flex-col gap-6">
 
 		<!-- Header -->
@@ -39,6 +39,9 @@
 				class="pixel-perfect h-14 w-14 drop-shadow-[0_4px_0_#7a3a14]"
 			/>
 			<p class="font-limelight text-xs tracking-[0.3em] text-teal uppercase">Betting Round</p>
+			<p class="font-limelight text-xs tracking-[0.3em] text-magenta uppercase">
+				{$questionStore.category} &bull; {$questionStore.difficulty}
+			</p>
 		</div>
 
 		<!-- Balance -->

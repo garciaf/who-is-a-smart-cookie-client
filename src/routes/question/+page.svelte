@@ -21,7 +21,7 @@
 <img src={asset('/images/star-teal.png')}    alt="" aria-hidden="true" class="absolute top-1/3 right-8 h-7 w-7 rotate-30 opacity-70" />
 
 <!-- Content -->
-<div class="relative z-10 flex h-full flex-col items-center justify-center gap-5 overflow-y-auto px-5 py-8">
+<div class="relative z-10 flex h-full flex-col items-center justify-center gap-5 overflow-y-auto px-5 pt-8 pb-[max(2rem,env(safe-area-inset-bottom))]">
 
 	<!-- Question panel -->
 	<div class="w-full max-w-lg rounded-3xl bg-cream sm:max-w-2xl px-6 py-6 shadow-[0_6px_0_#8a7000]">

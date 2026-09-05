@@ -9,6 +9,11 @@ export interface GamePlayer {
 	points: number;
 }
 
+export interface Category {
+	label: string;
+	difficulty: string;
+}
+
 export interface Notification {
 	message: string;
 	author: string;
@@ -61,7 +66,7 @@ export const questionStore = persisted(
 export const categoryStore = persisted(
 	'category',
 	{
-		categories: [] as string[]
+		categories: [] as Category[]
 	},
 	{ storage: 'session' }
 );
