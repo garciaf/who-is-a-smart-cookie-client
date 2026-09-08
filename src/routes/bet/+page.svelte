@@ -8,14 +8,12 @@
 	let selectedPlayer = $state<string | null>(null);
 	let bet = $state<number | null>(null);
 
-	function placeBet(event: Event) {
-		event.preventDefault();
+	function placeBet() {
 		if (!selectedPlayer || !bet) return;
 		socket?.emit('place-bet', { player: selectedPlayer, amount: bet });
 	}
 
-	function skipBet(event: Event) {
-		event.preventDefault();
+	function skipBet() {
 		socket?.emit('place-bet', { player: null, amount: null });
 	}
 </script>
@@ -101,9 +99,10 @@
 		<div class="h-px bg-gradient-to-r from-transparent via-game-yellow/40 to-transparent"></div>
 
 		<!-- Actions -->
-		<form onsubmit={placeBet} class="flex flex-col gap-3">
+		<div class="flex flex-col gap-3">
 			<button
-				type="submit"
+				type="button"
+				onclick={placeBet}
 				disabled={!selectedPlayer || !bet}
 				class="w-full cursor-pointer rounded-full bg-magenta py-4 font-paytone text-2xl text-cream shadow-[0_6px_0_#7a003d] transition-transform hover:brightness-110 active:translate-y-1 active:shadow-[0_2px_0_#7a003d] disabled:cursor-not-allowed disabled:opacity-40 disabled:shadow-none disabled:translate-y-0"
 			>
@@ -112,11 +111,11 @@
 			<button
 				type="button"
 				onclick={skipBet}
-				class="w-full py-2 font-boogaloo text-lg text-teal/70 hover:text-teal transition-colors"
+				class="w-full cursor-pointer rounded-full border-2 border-magenta bg-transparent py-4 font-paytone text-2xl text-cream transition-transform hover:bg-magenta/10 active:translate-y-1"
 			>
 				Skip — play it safe
 			</button>
-		</form>
+		</div>
 
 	</div>
 </div>
