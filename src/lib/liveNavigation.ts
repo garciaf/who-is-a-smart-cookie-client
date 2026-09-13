@@ -25,6 +25,7 @@ class LiveNavigation {
 				answers?: string[];
 				categories?: { label: string; difficulty: string }[];
 				players?: { id: string; name: string }[];
+				betPresets?: number[];
 			};
 
 			if (payload.screen === 'loading') {
@@ -53,7 +54,7 @@ class LiveNavigation {
 				});
 				goto(resolve('/question-open'));
 			} else if (payload.screen === 'bet') {
-				gameStore.set({ players: payload.players || [] });
+				gameStore.set({ players: payload.players || [], betPresets: payload.betPresets || [1, 2, 3, 4] });
 				questionStore.set({
 					category: payload.category || '',
 					difficulty: payload.difficulty || '',
@@ -104,7 +105,7 @@ class LiveNavigation {
 
 		socket?.on('update-players-list', (data: unknown) => {
 			const { players } = data as { players: { id: string; name: string }[] };
-			gameStore.set({ players });
+			gameStore.update((current) => ({ ...current, players }));
 		});
 
 		socket?.on('update-score', (data: unknown) => {

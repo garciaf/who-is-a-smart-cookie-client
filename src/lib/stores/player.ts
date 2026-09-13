@@ -41,7 +41,8 @@ export const playerStore = persisted(
 export const gameStore = persisted(
 	'game',
 	{
-		players: [] as GamePlayer[]
+		players: [] as GamePlayer[],
+		betPresets: [1, 2, 3, 4] as number[]
 	},
 	{ storage: 'session' }
 );

@@ -3,8 +3,6 @@
 	import socket from '$lib/socket';
 	import { playerStore, gameStore, questionStore } from '$lib/stores/player';
 
-	const presets = [1, 2, 3, 4];
-
 	let selectedPlayer = $state<string | null>(null);
 	let bet = $state<number | null>(null);
 
@@ -78,13 +76,13 @@
 		<!-- Bet amount -->
 		<div class="flex flex-col gap-3">
 			<p class="text-center font-boogaloo text-xl text-cream">HOW MANY POINTS WILL YOU RISK?</p>
-			<div class="grid grid-cols-4 gap-2">
-				{#each presets as amount (amount)}
+			<div class="flex gap-2">
+				{#each $gameStore.betPresets as amount (amount)}
 					<button
 						type="button"
 						onclick={() => bet = amount}
 						class={[
-							'rounded-xl border-2 py-3 font-paytone text-lg transition-all',
+							'flex-1 rounded-xl border-2 py-3 font-paytone text-lg transition-all',
 							bet === amount
 								? 'border-magenta bg-magenta/20 text-magenta shadow-[0_3px_0_#7a003d]'
 								: 'border-teal/40 bg-navy text-cream hover:border-teal hover:bg-teal/10'
