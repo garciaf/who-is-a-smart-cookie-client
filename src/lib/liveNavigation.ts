@@ -23,7 +23,9 @@ class LiveNavigation {
 				difficulty?: string;
 				text?: string;
 				answers?: string[];
-				categories?: { label: string; difficulty: string }[];
+				roundCount?: number;
+				maxRoundCount?: number;
+				categories?: { label: string; difficulty: string; key: string }[];
 				players?: { id: string; name: string }[];
 				betPresets?: number[];
 			};
@@ -36,6 +38,7 @@ class LiveNavigation {
 				goto(resolve('/loading'));
 			} else if (payload.screen === 'category') {
 				categoryStore.set({ categories: payload.categories || [] });
+				gameStore.set({ roundCount: payload.roundCount || 0, maxRoundCount: payload.maxRoundCount || 0 });
 				goto(resolve('/category'));
 			} else if (payload.screen === 'question') {
 				questionStore.set({

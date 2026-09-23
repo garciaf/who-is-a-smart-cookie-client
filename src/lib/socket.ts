@@ -3,8 +3,6 @@ import { browser } from '$app/environment';
 import { get } from 'svelte/store';
 import { playerStore, connectionStatus } from '$lib/stores/player';
 
-const serverUrl = import.meta.env.VITE_WEBSOCKET_URL;
-
 type Callback = (...args: unknown[]) => void;
 
 class Socket {
@@ -32,6 +30,12 @@ class Socket {
 	}
 
 	private connect(): void {
+		// Fall back to the page's own host when no explicit server URL is baked in,
+		// so a LAN-served page (e.g. http://192.168.1.23:5175) reaches the lobby
+		// server on the same host instead of trying to hit itself.
+		const serverUrl =
+			import.meta.env.VITE_WEBSOCKET_URL || `${window.location.protocol}//${window.location.hostname}:5678`;
+
 		this.socket = io(serverUrl, {
 			reconnection: true,
 			reconnectionAttempts: this.maxReconnectAttempts,

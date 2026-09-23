@@ -8,7 +8,7 @@
 	function submitCategory(event: Event) {
 		event.preventDefault();
 		if (selected === null) return;
-		socket?.emit('select-category', { category: $categoryStore.categories[selected].label });
+		socket?.emit('select-category', { category: $categoryStore.categories[selected].key });
 		selected = null;
 	}
 </script>

@@ -11,6 +11,7 @@ export interface GamePlayer {
 
 export interface Category {
 	label: string;
+	key: string;
 	difficulty: string;
 }
 
@@ -42,7 +43,9 @@ export const gameStore = persisted(
 	'game',
 	{
 		players: [] as GamePlayer[],
-		betPresets: [1, 2, 3, 4] as number[]
+		betPresets: [1, 2, 3, 4] as number[],
+		roundCount: 0 as number,
+		maxRoundCount: 0 as number
 	},
 	{ storage: 'session' }
 );
