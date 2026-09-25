@@ -8,6 +8,7 @@ import {
 	loadingMessage,
 	questionStore,
 	categoryStore,
+	settingsStore,
 	notifications
 } from '$lib/stores/player';
 
@@ -26,6 +27,8 @@ class LiveNavigation {
 				roundCount?: number;
 				maxRoundCount?: number;
 				categories?: { label: string; difficulty: string; key: string }[];
+				categorySettings?: { label: string; key: string }[];
+				difficulties?: { label: string; key: string }[];
 				players?: { id: string; name: string }[];
 				betPresets?: number[];
 			};
@@ -38,8 +41,19 @@ class LiveNavigation {
 				goto(resolve('/loading'));
 			} else if (payload.screen === 'category') {
 				categoryStore.set({ categories: payload.categories || [] });
-				gameStore.set({ roundCount: payload.roundCount || 0, maxRoundCount: payload.maxRoundCount || 0 });
+				gameStore.set({
+					players: payload.players || [],
+					betPresets: payload.betPresets || [1, 2, 3, 4],
+					roundCount: payload.roundCount || 0,
+					maxRoundCount: payload.maxRoundCount || 0
+				});
 				goto(resolve('/category'));
+			} else if (payload.screen === 'settings') {
+				settingsStore.set({
+					categories: payload.categorySettings || [],
+					difficulties: payload.difficulties || []
+				});
+				goto(resolve('/settings'));
 			} else if (payload.screen === 'question') {
 				questionStore.set({
 					category: payload.category || '',
@@ -57,7 +71,10 @@ class LiveNavigation {
 				});
 				goto(resolve('/question-open'));
 			} else if (payload.screen === 'bet') {
-				gameStore.set({ players: payload.players || [], betPresets: payload.betPresets || [1, 2, 3, 4] });
+				gameStore.set({
+					players: payload.players || [],
+					betPresets: payload.betPresets || [1, 2, 3, 4]
+				});
 				questionStore.set({
 					category: payload.category || '',
 					difficulty: payload.difficulty || '',

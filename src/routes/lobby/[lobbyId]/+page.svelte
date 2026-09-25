@@ -18,7 +18,7 @@
 			});
 		}
 	});
-	
+
 	function joinLobby(event: Event) {
 		event.preventDefault();
 		playerStore.update((s) => ({ ...s, name, lobbyId }));

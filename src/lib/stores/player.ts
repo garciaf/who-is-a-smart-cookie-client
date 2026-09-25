@@ -15,6 +15,16 @@ export interface Category {
 	difficulty: string;
 }
 
+export interface CategorySetting {
+	label: string;
+	key: string;
+}
+
+export interface DifficultySetting {
+	label: string;
+	key: string;
+}
+
 export interface Notification {
 	message: string;
 	author: string;
@@ -71,6 +81,15 @@ export const categoryStore = persisted(
 	'category',
 	{
 		categories: [] as Category[]
+	},
+	{ storage: 'session' }
+);
+
+export const settingsStore = persisted(
+	'settings',
+	{
+		categories: [] as CategorySetting[],
+		difficulties: [] as DifficultySetting[]
 	},
 	{ storage: 'session' }
 );
