@@ -65,7 +65,7 @@
 		<div class="relative my-2">
 			<div class="absolute inset-0 scale-150 rounded-full bg-cookie opacity-30 blur-3xl"></div>
 			<img
-				src={asset('/images/cookie-64-64px.png')}
+				src={asset('/images/mascott.svg')}
 				alt="Cookie"
 				class="pixel-perfect spin-slow relative h-48 w-48 drop-shadow-[0_8px_0_#7a3a14] sm:h-56 sm:w-56 md:h-64 md:w-64"
 			/>

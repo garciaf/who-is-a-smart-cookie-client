@@ -23,7 +23,7 @@
 
 		<div class="relative mb-4 flex justify-center">
 			<img
-				src={asset('/images/cookie-64-64px.png')}
+				src={asset('/images/cookie.svg')}
 				alt="Cookie"
 				class="pixel-perfect spin-slow relative h-20 w-20"
 			/>

@@ -95,11 +95,8 @@
 						<button
 							type="button"
 							onclick={() => toggleDifficulty(difficulty.key)}
-							class="w-full rounded-2xl border-4 px-4 py-4 font-boogaloo text-xl shadow-[0_4px_0_#8a7000] transition-all hover:brightness-95 active:translate-y-1 active:shadow-[0_1px_0_#8a7000] {selectedDifficulties.has(
-								difficulty.key
-							)
-								? 'border-magenta bg-magenta text-cream shadow-[0_4px_0_#7a003d]'
-								: 'border-game-yellow bg-cream text-navy'}"
+							class="option px-4 py-4 text-xl option-filled"
+							aria-pressed={selectedDifficulties.has(difficulty.key)}
 						>
 							{difficulty.label}
 						</button>
@@ -115,11 +112,8 @@
 						<button
 							type="button"
 							onclick={() => toggleCategory(category.key)}
-							class="w-full rounded-2xl border-4 px-6 py-5 font-boogaloo text-2xl shadow-[0_4px_0_#8a7000] transition-all hover:brightness-95 active:translate-y-1 active:shadow-[0_1px_0_#8a7000] {selectedCategories.has(
-								category.key
-							)
-								? 'border-magenta bg-magenta text-cream shadow-[0_4px_0_#7a003d]'
-								: 'border-game-yellow bg-cream text-navy'}"
+							class="option px-6 py-5 text-2xl option-filled"
+							aria-pressed={selectedCategories.has(category.key)}
 						>
 							{category.label}
 						</button>
@@ -132,7 +126,7 @@
 		<button
 			type="submit"
 			disabled={selectedCategories.size === 0 || selectedDifficulties.size === 0}
-			class="w-full shrink-0 cursor-pointer rounded-full bg-magenta py-4 font-paytone text-2xl text-cream shadow-[0_6px_0_#7a003d] transition-transform hover:brightness-110 active:translate-y-1 active:shadow-[0_2px_0_#7a003d] disabled:translate-y-0 disabled:cursor-not-allowed disabled:opacity-40 disabled:shadow-none"
+			class="btn shrink-0"
 		>
 			CONFIRM!
 		</button>

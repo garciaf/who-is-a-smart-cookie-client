@@ -6,7 +6,6 @@ export interface GamePlayer {
 	name: string;
 	balance: number;
 	color: string;
-	points: number;
 }
 
 export interface Category {

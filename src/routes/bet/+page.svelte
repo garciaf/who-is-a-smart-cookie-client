@@ -30,14 +30,12 @@
 		<!-- Header -->
 		<div class="flex flex-col items-center gap-3">
 			<img
-				src={asset('/images/cookie-64-64px.png')}
+				src={asset('/images/cookie.svg')}
 				alt="Cookie"
 				class="pixel-perfect h-14 w-14 drop-shadow-[0_4px_0_#7a3a14]"
 			/>
 			<p class="font-limelight text-xs tracking-[0.3em] text-teal uppercase">Betting Round</p>
-			<p class="font-limelight text-xs tracking-[0.3em] text-magenta uppercase">
-				{$questionStore.category} &bull; {$questionStore.difficulty}
-			</p>
+			
 		</div>
 
 		<!-- Balance -->
@@ -46,24 +44,27 @@
 			<p class="font-monoton text-3xl text-game-yellow drop-shadow-[0_2px_0_#8a7000]">
 				{$playerStore.balance} <span class="font-boogaloo text-xl text-cream">pts</span>
 			</p>
+			
 		</div>
+		<div class="flex flex-col items-center gap-3">
+			<p class="font-boogaloo text-lg text-cream uppercase">
+					{$questionStore.category} &bull; {$questionStore.difficulty}
+				</p>
 
+		</div>
 		<div class="h-px bg-gradient-to-r from-transparent via-game-yellow/40 to-transparent"></div>
 
 		<!-- Player selection -->
 		<div class="flex flex-col gap-3">
+			
 			<p class="text-center font-boogaloo text-xl text-cream">WHO DO YOU THINK IS THE SMART COOKIE?</p>
 			<div class="grid grid-cols-2 gap-3">
 				{#each $gameStore.players as player (player.id)}
 					<button
 						type="button"
 						onclick={() => selectedPlayer = player.id}
-						class={[
-							'rounded-2xl border-2 px-4 py-4 font-boogaloo text-xl transition-all',
-							selectedPlayer === player.id
-								? 'border-game-yellow bg-game-yellow/20 text-game-yellow shadow-[0_4px_0_#8a7000]'
-								: 'border-teal/40 bg-navy text-cream hover:border-teal hover:bg-teal/10'
-						].join(' ')}
+						class="toggle rounded-2xl px-4 py-4 font-boogaloo text-xl"
+						aria-pressed={selectedPlayer === player.id}
 					>
 						{player.name}
 					</button>
@@ -81,12 +82,8 @@
 					<button
 						type="button"
 						onclick={() => bet = amount}
-						class={[
-							'flex-1 rounded-xl border-2 py-3 font-paytone text-lg transition-all',
-							bet === amount
-								? 'border-magenta bg-magenta/20 text-magenta shadow-[0_3px_0_#7a003d]'
-								: 'border-teal/40 bg-navy text-cream hover:border-teal hover:bg-teal/10'
-						].join(' ')}
+						class="toggle toggle-primary flex-1 rounded-xl py-3 font-paytone text-lg"
+						aria-pressed={bet === amount}
 					>
 						{amount}
 					</button>
@@ -102,14 +99,14 @@
 				type="button"
 				onclick={placeBet}
 				disabled={!selectedPlayer || !bet}
-				class="w-full cursor-pointer rounded-full bg-magenta py-4 font-paytone text-2xl text-cream shadow-[0_6px_0_#7a003d] transition-transform hover:brightness-110 active:translate-y-1 active:shadow-[0_2px_0_#7a003d] disabled:cursor-not-allowed disabled:opacity-40 disabled:shadow-none disabled:translate-y-0"
+				class="btn"
 			>
 				PLACE YOUR BET!
 			</button>
 			<button
 				type="button"
 				onclick={skipBet}
-				class="w-full cursor-pointer rounded-full border-2 border-magenta bg-transparent py-4 font-paytone text-2xl text-cream transition-transform hover:bg-magenta/10 active:translate-y-1"
+				class="btn btn-outline"
 			>
 				Skip — play it safe
 			</button>

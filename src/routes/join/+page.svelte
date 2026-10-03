@@ -39,7 +39,7 @@
 		<!-- Cookie icon -->
 		<div class="mb-4 flex justify-center">
 			<img
-				src={asset('/images/cookie-64-64px.png')}
+				src={asset('/images/cookie.svg')}
 				alt="Cookie"
 				class="pixel-perfect h-16 w-16 drop-shadow-[0_4px_0_#7a3a14]"
 			/>
@@ -97,7 +97,7 @@
 			<button
 				type="submit"
 				disabled={!name.trim() || !code.trim()}
-				class="w-full cursor-pointer rounded-full bg-magenta py-4 font-paytone text-2xl text-cream shadow-[0_6px_0_#7a003d] transition-transform hover:brightness-110 active:translate-y-1 active:shadow-[0_2px_0_#7a003d] disabled:cursor-not-allowed disabled:opacity-40 disabled:shadow-none disabled:translate-y-0"
+				class="btn"
 			>
 				JOIN THE SHOW!
 			</button>

@@ -29,7 +29,7 @@ class LiveNavigation {
 				categories?: { label: string; difficulty: string; key: string }[];
 				categorySettings?: { label: string; key: string }[];
 				difficulties?: { label: string; key: string }[];
-				players?: { id: string; name: string }[];
+				players?: { id: string; name: string; color?: string; balance?: number }[];
 				betPresets?: number[];
 			};
 
@@ -124,7 +124,7 @@ class LiveNavigation {
 		});
 
 		socket?.on('update-players-list', (data: unknown) => {
-			const { players } = data as { players: { id: string; name: string }[] };
+			const { players } = data as { players: { id: string; name: string; color?: string; balance?: number }[] };
 			gameStore.update((current) => ({ ...current, players }));
 		});
 

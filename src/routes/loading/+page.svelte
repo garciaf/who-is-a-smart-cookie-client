@@ -17,7 +17,7 @@
 
 		<!-- Cookie icon -->
 		<img
-			src={asset('/images/cookie-64-64px.png')}
+			src={asset('/images/cookie.svg')}
 			alt="Cookie"
 			class="pixel-perfect h-16 w-16 drop-shadow-[0_4px_0_#7a3a14]"
 		/>

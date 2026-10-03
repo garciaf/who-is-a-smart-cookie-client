@@ -2,42 +2,4 @@
 @plugin '@tailwindcss/forms';
 @plugin '@tailwindcss/typography';
 
-@utility spin-slow {
-	animation: spin 30s linear infinite;
-}
-
-@keyframes spin {
-	from { transform: rotate(0deg); }
-	to   { transform: rotate(360deg); }
-}
-
-@utility pixel-perfect {
-	image-rendering: pixelated;
-	image-rendering: -moz-crisp-edges;
-	image-rendering: crisp-edges;
-}
-
-@theme {
-	--color-navy: #1a1a2e;
-	--color-cream: #f8e8c8;
-	--color-cookie: #e0a464;
-	--color-cookie-ring: #c68442;
-	--color-cookie-dark: #7a3a14;
-	--color-game-green: #2c9e58;
-	--color-game-green-dark: #1a6638;
-	--color-magenta: #d4006a;
-	--color-magenta-dark: #7a003d;
-	--color-game-orange: #f06000;
-	--color-game-orange-dark: #8a3500;
-	--color-game-yellow: #f5c800;
-	--color-game-yellow-dark: #8a7000;
-	--color-teal: #007a8c;
-	--color-teal-dark: #00525e;
-	--color-gray: #6b6b80;
-	--color-gray-dark: #4a4a5e;
-
-	--font-boogaloo: 'Boogaloo', sans-serif;
-	--font-limelight: 'Limelight', cursive;
-	--font-monoton: 'Monoton', cursive;
-	--font-paytone: 'Paytone One', sans-serif;
-}
+@import '../lib/styles/theme.css';

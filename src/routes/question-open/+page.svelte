@@ -44,7 +44,7 @@
 		<button
 			type="submit"
 			disabled={!answer.trim()}
-			class="w-full rounded-b-2xl bg-game-green py-5 font-paytone text-2xl text-cream shadow-[0_4px_0_#1a6638] transition-all hover:brightness-110 active:translate-y-1 active:shadow-[0_1px_0_#1a6638] disabled:cursor-not-allowed disabled:bg-gray disabled:shadow-[0_4px_0_#4a4a5e] disabled:translate-y-0"
+			class="btn btn-secondary rounded-none rounded-b-2xl py-5"
 		>
 			VALIDATE
 		</button>

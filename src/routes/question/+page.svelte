@@ -40,7 +40,8 @@
 				<button
 					type="button"
 					onclick={() => { selected = selected === i ? null : i; }}
-					class="w-full rounded-2xl border-4 bg-cream px-6 py-5 font-boogaloo text-2xl text-navy shadow-[0_4px_0_#8a7000] transition-all hover:brightness-95 active:translate-y-1 active:shadow-[0_1px_0_#8a7000] {selected === i ? 'border-magenta shadow-[0_4px_0_#7a003d]' : 'border-game-yellow'}"
+					class="option px-6 py-5 text-2xl"
+					aria-pressed={selected === i}
 				>
 					{answer}
 				</button>
@@ -49,7 +50,7 @@
 		<button
 			type="submit"
 			disabled={selected === null}
-			class="w-full cursor-pointer rounded-full bg-magenta py-4 font-paytone text-2xl text-cream shadow-[0_6px_0_#7a003d] transition-transform hover:brightness-110 active:translate-y-1 active:shadow-[0_2px_0_#7a003d] disabled:cursor-not-allowed disabled:opacity-40 disabled:shadow-none disabled:translate-y-0"
+			class="btn"
 		>
 			SUBMIT!
 		</button>

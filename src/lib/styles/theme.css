@@ -1,0 +1,175 @@
+/*
+ * Central theme for the app: colors, fonts and reusable component utilities.
+ * Change the look of the whole app from here.
+ */
+
+@theme {
+	/* ---- Palette (raw colors) ---- */
+	--color-navy: #1a1a2e;
+	--color-cream: #f8e8c8;
+	--color-cookie: #e0a464;
+	--color-cookie-ring: #c68442;
+	--color-cookie-dark: #7a3a14;
+	--color-game-green: #2c9e58;
+	--color-game-green-dark: #1a6638;
+	--color-magenta: #d4006a;
+	--color-magenta-dark: #7a003d;
+	--color-game-orange: #f06000;
+	--color-game-orange-dark: #8a3500;
+	--color-game-yellow: #f5c800;
+	--color-game-yellow-dark: #8a7000;
+	--color-teal: #007a8c;
+	--color-teal-dark: #00525e;
+	--color-gray: #6b6b80;
+	--color-gray-dark: #4a4a5e;
+
+	/* ---- Semantic colors (what components use; repoint these to re-skin) ---- */
+	--color-background: var(--color-navy);
+	--color-foreground: var(--color-cream);
+	--color-primary: var(--color-magenta);
+	--color-primary-dark: var(--color-magenta-dark);
+	--color-secondary: var(--color-game-green);
+	--color-secondary-dark: var(--color-game-green-dark);
+	--color-accent: var(--color-game-yellow);
+	--color-accent-dark: var(--color-game-yellow-dark);
+
+	/* ---- Fonts ---- */
+	--font-boogaloo: 'Boogaloo', sans-serif;
+	--font-limelight: 'Limelight', cursive;
+	--font-monoton: 'Monoton', cursive;
+	--font-paytone: 'Paytone One', sans-serif;
+
+	/* Semantic fonts */
+	--font-body: var(--font-boogaloo);
+	--font-heading: var(--font-limelight);
+	--font-button: var(--font-paytone);
+	--font-display: var(--font-monoton);
+}
+
+/* ---- Base defaults ---- */
+@layer base {
+	body {
+		@apply bg-background font-body text-foreground;
+	}
+}
+
+/* ---- Animations ---- */
+@keyframes spin {
+	from {
+		transform: rotate(0deg);
+	}
+	to {
+		transform: rotate(360deg);
+	}
+}
+
+@utility spin-slow {
+	animation: spin 30s linear infinite;
+}
+
+@utility pixel-perfect {
+	image-rendering: pixelated;
+	image-rendering: -moz-crisp-edges;
+	image-rendering: crisp-edges;
+}
+
+/* ---- Buttons ----
+ * Usage: class="btn"            -> primary
+ *        class="btn btn-secondary"
+ *        class="btn btn-accent"
+ * Colour variants only set CSS variables, so they never conflict with `btn`.
+ */
+@utility btn {
+	background-color: var(--btn-bg, var(--color-primary));
+	box-shadow: 0 6px 0 var(--btn-shadow, var(--color-primary-dark));
+	@apply w-full cursor-pointer rounded-full py-4 font-button text-2xl text-foreground transition-transform;
+
+	&:hover {
+		@apply brightness-110;
+	}
+	&:active {
+		@apply translate-y-1;
+		box-shadow: 0 2px 0 var(--btn-shadow, var(--color-primary-dark));
+	}
+	&:disabled {
+		@apply translate-y-0 cursor-not-allowed opacity-40;
+		box-shadow: none;
+	}
+}
+
+@utility btn-secondary {
+	--btn-bg: var(--color-secondary);
+	--btn-shadow: var(--color-secondary-dark);
+}
+
+@utility btn-accent {
+	--btn-bg: var(--color-accent);
+	--btn-shadow: var(--color-accent-dark);
+}
+
+@utility btn-outline {
+	--btn-bg: transparent;
+	--btn-shadow: transparent;
+	border: 2px solid var(--color-primary);
+
+	&:hover {
+		--btn-bg: color-mix(in oklab, var(--color-primary) 10%, transparent);
+		@apply brightness-100;
+	}
+}
+
+/* ---- Option cards (big selectable answers / categories) ----
+ * Usage: <button class="option px-6 py-5 text-2xl" aria-pressed={isSelected}>
+ *        add `option-filled` to fill the card with the primary color when selected.
+ * Size (padding / text) is left to the markup.
+ */
+@utility option {
+	@apply w-full cursor-pointer rounded-2xl border-4 border-accent bg-foreground font-body text-background transition-all;
+	box-shadow: 0 4px 0 var(--color-accent-dark);
+
+	&:hover {
+		@apply brightness-95;
+	}
+	&:active {
+		@apply translate-y-1;
+		box-shadow: 0 1px 0 var(--color-accent-dark);
+	}
+	&[aria-pressed='true'] {
+		border-color: var(--color-primary);
+		background-color: var(--option-selected-bg, var(--color-foreground));
+		color: var(--option-selected-fg, var(--color-background));
+		box-shadow: 0 4px 0 var(--color-primary-dark);
+	}
+}
+
+@utility option-filled {
+	--option-selected-bg: var(--color-primary);
+	--option-selected-fg: var(--color-foreground);
+}
+
+/* ---- Toggle chips (dark, compact choices: players, bet amounts) ----
+ * Usage: <button class="toggle rounded-2xl px-4 py-4" aria-pressed={isSelected}>
+ *        add `toggle-primary` to highlight with the primary color instead of accent.
+ */
+@utility toggle {
+	@apply cursor-pointer border-2 border-teal/40 bg-background text-foreground transition-all;
+
+	&:hover {
+		@apply border-teal bg-teal/10;
+	}
+	&[aria-pressed='true'] {
+		border-color: var(--toggle-color, var(--color-accent));
+		background-color: color-mix(
+			in oklab,
+			var(--toggle-color, var(--color-accent)) 20%,
+			transparent
+		);
+		color: var(--toggle-color, var(--color-accent));
+		box-shadow: 0 4px 0 var(--toggle-shadow, var(--color-accent-dark));
+	}
+}
+
+@utility toggle-primary {
+	--toggle-color: var(--color-primary);
+	--toggle-shadow: var(--color-primary-dark);
+}
