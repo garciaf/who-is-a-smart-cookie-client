@@ -134,17 +134,37 @@
 		@apply translate-y-1;
 		box-shadow: 0 1px 0 var(--color-accent-dark);
 	}
-	&[aria-pressed='true'] {
+	&[aria-pressed='true'],
+	&:has(input:checked) {
 		border-color: var(--color-primary);
 		background-color: var(--option-selected-bg, var(--color-foreground));
 		color: var(--option-selected-fg, var(--color-background));
 		box-shadow: 0 4px 0 var(--color-primary-dark);
+	}
+	&:has(input:focus-visible) {
+		@apply outline-4 outline-offset-2 outline-accent;
 	}
 }
 
 @utility option-filled {
 	--option-selected-bg: var(--color-primary);
 	--option-selected-fg: var(--color-foreground);
+}
+
+/* ---- Checkbox box (multi-select option cards) ----
+ * Usage: <label class="option ...">
+ *          <input type="checkbox" class="sr-only" />
+ *          <span class="checkbox"><svg>…check…</svg></span>
+ *          Label
+ *        </label>
+ * The box must directly follow the input. The check icon uses currentColor.
+ */
+@utility checkbox {
+	@apply flex size-7 shrink-0 items-center justify-center rounded-lg border-4 border-accent-dark bg-foreground text-transparent transition-all;
+
+	input:checked + & {
+		@apply border-foreground bg-foreground text-primary;
+	}
 }
 
 /* ---- Toggle chips (dark, compact choices: players, bet amounts) ----

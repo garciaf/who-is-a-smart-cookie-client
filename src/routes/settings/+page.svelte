@@ -89,34 +89,66 @@
 
 			<!-- Difficulties -->
 			<div class="flex flex-col gap-3">
-				<p class="font-limelight text-sm tracking-[0.2em] text-cream uppercase">Difficulties</p>
+				<div class="flex items-baseline justify-between gap-3">
+					<p class="font-limelight text-sm tracking-[0.2em] text-cream uppercase">Difficulties</p>
+					<p class="font-boogaloo text-base text-game-yellow">Pick one or more</p>
+				</div>
 				<div class="grid grid-cols-2 gap-3 sm:grid-cols-3">
 					{#each $settingsStore.difficulties as difficulty (difficulty.key)}
-						<button
-							type="button"
-							onclick={() => toggleDifficulty(difficulty.key)}
-							class="option px-4 py-4 text-xl option-filled"
-							aria-pressed={selectedDifficulties.has(difficulty.key)}
-						>
+						<label class="flex option items-center gap-3 px-4 py-4 text-left text-xl option-filled">
+							<input
+								type="checkbox"
+								class="sr-only"
+								checked={selectedDifficulties.has(difficulty.key)}
+								onchange={() => toggleDifficulty(difficulty.key)}
+							/>
+							<span class="checkbox" aria-hidden="true">
+								<svg
+									viewBox="0 0 24 24"
+									class="size-5"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="4"
+									stroke-linecap="round"
+									stroke-linejoin="round"><path d="M5 12l5 5L19 7" /></svg
+								>
+							</span>
 							{difficulty.label}
-						</button>
+						</label>
 					{/each}
 				</div>
 			</div>
 
 			<!-- Categories -->
 			<div class="flex flex-col gap-3">
-				<p class="font-limelight text-sm tracking-[0.2em] text-cream uppercase">Categories</p>
+				<div class="flex items-baseline justify-between gap-3">
+					<p class="font-limelight text-sm tracking-[0.2em] text-cream uppercase">Categories</p>
+					<p class="font-boogaloo text-base text-game-yellow">Pick one or more</p>
+				</div>
 				<div class="grid grid-cols-1 gap-3 sm:grid-cols-2">
 					{#each $settingsStore.categories as category (category.key)}
-						<button
-							type="button"
-							onclick={() => toggleCategory(category.key)}
-							class="option px-6 py-5 text-2xl option-filled"
-							aria-pressed={selectedCategories.has(category.key)}
+						<label
+							class="flex option items-center gap-4 px-6 py-5 text-left text-2xl option-filled"
 						>
+							<input
+								type="checkbox"
+								class="sr-only"
+								checked={selectedCategories.has(category.key)}
+								onchange={() => toggleCategory(category.key)}
+							/>
+							<span class="checkbox" aria-hidden="true">
+								<svg
+									viewBox="0 0 24 24"
+									class="size-5"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="4"
+									stroke-linecap="round"
+									stroke-linejoin="round"><path d="M5 12l5 5L19 7" /></svg
+								>
+							</span>
 							{category.label}
-						</button>
+						</label>
 					{/each}
 				</div>
 			</div>
