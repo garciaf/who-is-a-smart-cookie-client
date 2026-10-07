@@ -11,17 +11,20 @@ export interface GamePlayer {
 export interface Category {
 	label: string;
 	key: string;
+	question: string;
 	difficulty: string;
 }
 
 export interface CategorySetting {
 	label: string;
 	key: string;
+	question: string;
 }
 
 export interface DifficultySetting {
 	label: string;
 	key: string;
+	question: string;
 }
 
 export interface Notification {
