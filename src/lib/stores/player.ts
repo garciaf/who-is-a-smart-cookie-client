@@ -74,7 +74,8 @@ export const questionStore = persisted(
 		category: '',
 		difficulty: '',
 		text: '',
-		answers: [] as string[]
+		answers: [] as string[],
+		hasImage: false
 	},
 	{ storage: 'session' }
 );

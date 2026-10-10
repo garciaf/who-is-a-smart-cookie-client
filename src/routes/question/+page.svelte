@@ -31,6 +31,11 @@
 		<p class="font-boogaloo text-3xl leading-snug text-navy text-center">
 			{$questionStore.text}
 		</p>
+		{#if $questionStore.hasImage}
+			<p class="mt-3 text-center font-boogaloo text-lg tracking-wide text-navy">
+				(Look at the screen!)
+			</p>
+		{/if}
 	</div>
 
 	<!-- Answer buttons -->

@@ -24,6 +24,7 @@ class LiveNavigation {
 				difficulty?: string;
 				text?: string;
 				answers?: string[];
+				has_image?: boolean;
 				roundCount?: number;
 				maxRoundCount?: number;
 				categories?: { label: string; difficulty: string; key: string }[];
@@ -59,7 +60,8 @@ class LiveNavigation {
 					category: payload.category || '',
 					difficulty: payload.difficulty || '',
 					text: payload.text || '',
-					answers: payload.answers || []
+					answers: payload.answers || [],
+					hasImage: Boolean(payload.has_image)
 				});
 				goto(resolve('/question'));
 			} else if (payload.screen === 'question-open') {
@@ -67,7 +69,8 @@ class LiveNavigation {
 					category: payload.category || '',
 					difficulty: payload.difficulty || '',
 					text: payload.text || '',
-					answers: []
+					answers: [],
+					hasImage: Boolean(payload.has_image)
 				});
 				goto(resolve('/question-open'));
 			} else if (payload.screen === 'bet') {
@@ -79,7 +82,8 @@ class LiveNavigation {
 					category: payload.category || '',
 					difficulty: payload.difficulty || '',
 					text: '',
-					answers: []
+					answers: [],
+					hasImage: false
 				});
 				goto(resolve('/bet'));
 			}
