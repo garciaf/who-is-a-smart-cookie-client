@@ -9,7 +9,8 @@ import {
 	questionStore,
 	categoryStore,
 	settingsStore,
-	notifications
+	notifications,
+	lobbyStatus
 } from '$lib/stores/player';
 
 class LiveNavigation {
@@ -73,6 +74,8 @@ class LiveNavigation {
 					hasImage: Boolean(payload.has_image)
 				});
 				goto(resolve('/question-open'));
+			} else if (payload.screen === 'audience') {
+				goto(resolve('/audience'));
 			} else if (payload.screen === 'bet') {
 				gameStore.set({
 					players: payload.players || [],
@@ -94,6 +97,16 @@ class LiveNavigation {
 			playerStore.update((state) => ({ ...state, id }));
 			loadingMessage.set({ message: 'Waiting for the game to start...' });
 			goto(resolve('/loading'));
+		});
+
+		socket?.on('lobby-status', (data: unknown) => {
+			const status = data as {
+				canJoinAsPlayer: boolean;
+				gameStarted: boolean;
+				playerCount: number;
+				maxPlayerCount: number;
+			};
+			lobbyStatus.set({ ...status, known: true });
 		});
 
 		socket?.on('update-player', (data: unknown) => {

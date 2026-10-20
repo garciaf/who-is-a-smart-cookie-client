@@ -32,6 +32,14 @@ export interface Notification {
 	author: string;
 }
 
+export interface LobbyStatus {
+	known: boolean;
+	canJoinAsPlayer: boolean;
+	gameStarted: boolean;
+	playerCount: number;
+	maxPlayerCount: number;
+}
+
 export interface ConnectionStatus {
 	connected: boolean;
 	reconnecting: boolean;
@@ -98,6 +106,16 @@ export const settingsStore = persisted(
 );
 
 export const notifications = writable<Notification[]>([]);
+
+// Sent by the game: whether a player spot is still free. Unknown until the game answers.
+export const unknownLobbyStatus: LobbyStatus = {
+	known: false,
+	canJoinAsPlayer: false,
+	gameStarted: false,
+	playerCount: 0,
+	maxPlayerCount: 0
+};
+export const lobbyStatus = writable<LobbyStatus>(unknownLobbyStatus);
 
 export const connectionStatus = writable<ConnectionStatus>({
 	connected: false,

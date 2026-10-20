@@ -119,6 +119,15 @@ class Socket {
 		this.listeners.get(eventName)?.push(callback);
 	}
 
+	public off(eventName: string, callback: Callback): void {
+		const callbacks = this.listeners.get(eventName);
+		if (!callbacks) return;
+		this.listeners.set(
+			eventName,
+			callbacks.filter((cb) => cb !== callback)
+		);
+	}
+
 	public emit(event: string, data?: unknown, to?: string): void {
 		console.log(`[Socket] Emitting event: ${event}`, data);
 		const playerId = this.getPlayerId();

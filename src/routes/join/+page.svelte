@@ -1,7 +1,9 @@
 <script lang="ts">
-	import { asset } from '$app/paths';
+	import { onMount } from 'svelte';
+	import { goto } from '$app/navigation';
+	import { asset, resolve } from '$app/paths';
 	import socket from '$lib/socket';
-	import { playerStore } from '$lib/stores/player';
+	import { playerStore, lobbyStatus, unknownLobbyStatus } from '$lib/stores/player';
 
 	let code = $state('');
 	let name = $state('');
@@ -12,16 +14,16 @@
 		socket?.emit('join-lobby', { lobbyId: code, name });
 	}
 
-	socket?.on('joined-lobby', (data) => {
-		const { lobbyId: joinedLobbyId, clientId } = data as { lobbyId: string; clientId: string };
+	onMount(() => {
+		const onJoinedLobby = (data: unknown) => {
+			const { lobbyId: joinedLobbyId, clientId } = data as { lobbyId: string; clientId: string };
 
-		playerStore.update(state => ({...state, lobbyId: joinedLobbyId, id: clientId, name}));
-
-		if (socket) {
-			socket.emit('new-player', {
-				name: name,
-			});
-		}
+			playerStore.update(state => ({...state, lobbyId: joinedLobbyId, id: clientId, name}));
+			lobbyStatus.set(unknownLobbyStatus);
+			goto(resolve('/role'));
+		};
+		socket?.on('joined-lobby', onJoinedLobby);
+		return () => socket?.off('joined-lobby', onJoinedLobby);
 	});
 </script>
 
