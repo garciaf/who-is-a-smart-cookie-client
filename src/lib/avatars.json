@@ -1,0 +1,227 @@
+[
+	{
+		"id": "round-lilac",
+		"name": "Round Lilac",
+		"shape": "round"
+	},
+	{
+		"id": "round-pink",
+		"name": "Round Pink",
+		"shape": "round"
+	},
+	{
+		"id": "round-sky",
+		"name": "Round Sky",
+		"shape": "round"
+	},
+	{
+		"id": "round-mint",
+		"name": "Round Mint",
+		"shape": "round"
+	},
+	{
+		"id": "round-lemon",
+		"name": "Round Lemon",
+		"shape": "round"
+	},
+	{
+		"id": "round-white",
+		"name": "Round White",
+		"shape": "round"
+	},
+	{
+		"id": "round-chocolate",
+		"name": "Round Chocolate",
+		"shape": "round"
+	},
+	{
+		"id": "round-orange",
+		"name": "Round Orange",
+		"shape": "round"
+	},
+	{
+		"id": "round-strawberry",
+		"name": "Round Strawberry",
+		"shape": "round"
+	},
+	{
+		"id": "round-teal",
+		"name": "Round Teal",
+		"shape": "round"
+	},
+	{
+		"id": "round-lime",
+		"name": "Round Lime",
+		"shape": "round"
+	},
+	{
+		"id": "star-lilac",
+		"name": "Star Lilac",
+		"shape": "star"
+	},
+	{
+		"id": "star-pink",
+		"name": "Star Pink",
+		"shape": "star"
+	},
+	{
+		"id": "star-sky",
+		"name": "Star Sky",
+		"shape": "star"
+	},
+	{
+		"id": "star-mint",
+		"name": "Star Mint",
+		"shape": "star"
+	},
+	{
+		"id": "star-lemon",
+		"name": "Star Lemon",
+		"shape": "star"
+	},
+	{
+		"id": "star-white",
+		"name": "Star White",
+		"shape": "star"
+	},
+	{
+		"id": "star-chocolate",
+		"name": "Star Chocolate",
+		"shape": "star"
+	},
+	{
+		"id": "star-orange",
+		"name": "Star Orange",
+		"shape": "star"
+	},
+	{
+		"id": "star-strawberry",
+		"name": "Star Strawberry",
+		"shape": "star"
+	},
+	{
+		"id": "star-teal",
+		"name": "Star Teal",
+		"shape": "star"
+	},
+	{
+		"id": "star-lime",
+		"name": "Star Lime",
+		"shape": "star"
+	},
+	{
+		"id": "square-lilac",
+		"name": "Square Lilac",
+		"shape": "square"
+	},
+	{
+		"id": "square-pink",
+		"name": "Square Pink",
+		"shape": "square"
+	},
+	{
+		"id": "square-sky",
+		"name": "Square Sky",
+		"shape": "square"
+	},
+	{
+		"id": "square-mint",
+		"name": "Square Mint",
+		"shape": "square"
+	},
+	{
+		"id": "square-lemon",
+		"name": "Square Lemon",
+		"shape": "square"
+	},
+	{
+		"id": "square-white",
+		"name": "Square White",
+		"shape": "square"
+	},
+	{
+		"id": "square-orange",
+		"name": "Square Orange",
+		"shape": "square"
+	},
+	{
+		"id": "square-strawberry",
+		"name": "Square Strawberry",
+		"shape": "square"
+	},
+	{
+		"id": "square-teal",
+		"name": "Square Teal",
+		"shape": "square"
+	},
+	{
+		"id": "square-lime",
+		"name": "Square Lime",
+		"shape": "square"
+	},
+	{
+		"id": "chocolate_chip",
+		"name": "Chocolate Chip",
+		"shape": "chocolate_chip"
+	},
+	{
+		"id": "double_chocolate",
+		"name": "Double Chocolate",
+		"shape": "double_chocolate"
+	},
+	{
+		"id": "chocolate_drizzle",
+		"name": "Chocolate Drizzle",
+		"shape": "chocolate_drizzle"
+	},
+	{
+		"id": "amaretto",
+		"name": "Amaretto",
+		"shape": "amaretto"
+	},
+	{
+		"id": "girella",
+		"name": "Girella",
+		"shape": "girella"
+	},
+	{
+		"id": "scacchi",
+		"name": "Scacchi",
+		"shape": "scacchi"
+	},
+	{
+		"id": "almond_square",
+		"name": "Almond Square",
+		"shape": "almond_square"
+	},
+	{
+		"id": "butter_square_glazed",
+		"name": "Butter Square Glazed",
+		"shape": "butter_square_glazed"
+	},
+	{
+		"id": "occhio_di_bue",
+		"name": "Occhio Di Bue",
+		"shape": "occhio_di_bue"
+	},
+	{
+		"id": "linzer_star",
+		"name": "Linzer Star",
+		"shape": "linzer_star"
+	},
+	{
+		"id": "candy_star",
+		"name": "Candy Star",
+		"shape": "candy_star"
+	},
+	{
+		"id": "coconut_star",
+		"name": "Coconut Star",
+		"shape": "coconut_star"
+	},
+	{
+		"id": "pistachio_star",
+		"name": "Pistachio Star",
+		"shape": "pistachio_star"
+	}
+]

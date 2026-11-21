@@ -105,23 +105,27 @@ class LiveNavigation {
 				gameStarted: boolean;
 				playerCount: number;
 				maxPlayerCount: number;
+				takenAvatars?: string[];
 			};
-			lobbyStatus.set({ ...status, known: true });
+			lobbyStatus.set({ ...status, takenAvatars: status.takenAvatars ?? [], known: true });
 		});
 
 		socket?.on('update-player', (data: unknown) => {
-			const { id, lobbyId, name, balance } = data as {
+			const { id, lobbyId, name, balance, avatar } = data as {
 				id: string;
 				lobbyId: string;
 				name: string;
 				balance: number;
+				avatar?: string;
 			};
-			playerStore.set({
+			playerStore.update((current) => ({
 				id: id ?? null,
-				lobbyId: lobbyId || '',
-				name: name || '',
-				balance: balance || 0
-			});
+				lobbyId: lobbyId || current.lobbyId,
+				name: name || current.name,
+				balance: balance ?? current.balance,
+				// The game may hand out another cookie when the chosen one was just taken.
+				avatar: avatar || current.avatar
+			}));
 		});
 
 		socket?.on('update-player-state', (data: unknown) => {

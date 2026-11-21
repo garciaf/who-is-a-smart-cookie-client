@@ -1,7 +1,7 @@
 <script lang="ts">
+	import PlayerCookie from '$lib/components/PlayerCookie.svelte';
 	import { onMount } from 'svelte';
 	import { get } from 'svelte/store';
-	import { asset } from '$app/paths';
 	import socket from '$lib/socket';
 	import { lobbyStatus } from '$lib/stores/player';
 
@@ -38,24 +38,14 @@
 	}
 </script>
 
-<!-- Corner accents -->
-<img src={asset('/images/burst-magenta.png')} alt="" aria-hidden="true" class="absolute -top-16 -left-16 h-56 w-56 opacity-80" />
-<img src={asset('/images/burst-orange.png')}  alt="" aria-hidden="true" class="absolute -bottom-12 -right-12 h-56 w-56 opacity-80" />
-<img src={asset('/images/star-yellow.png')}   alt="" aria-hidden="true" class="absolute top-8 right-16 h-10 w-10 rotate-12 opacity-90" />
-<img src={asset('/images/star-teal.png')}     alt="" aria-hidden="true" class="absolute bottom-12 left-16 h-8 w-8 -rotate-6 opacity-80" />
-
 <!-- Scrollable wrapper -->
 <div class="relative z-10 flex h-full items-start justify-center overflow-y-auto px-4 pt-6 pb-[max(1.5rem,env(safe-area-inset-bottom))]">
-	<div class="w-full max-w-md rounded-3xl border-4 border-game-yellow bg-navy/90 px-8 py-10 shadow-[0_8px_0_#8a7000] backdrop-blur-sm flex flex-col gap-6">
+	<div class="w-full max-w-md rounded-3xl border-4 border-plate bg-stage-dark/90 px-8 py-10 shadow-[0_8px_0_#2e1446] backdrop-blur-sm flex flex-col gap-6">
 
 		<!-- Header -->
 		<div class="flex flex-col items-center gap-3 text-center">
-			<img
-				src={asset('/images/cookie.svg')}
-				alt="Cookie"
-				class="pixel-perfect h-14 w-14 drop-shadow-[0_4px_0_#7a3a14]"
-			/>
-			<p class="font-limelight text-xs tracking-[0.3em] text-teal uppercase">You're in the audience</p>
+			<PlayerCookie class="h-14 w-14 drop-shadow-[0_4px_0_#2e1446]" />
+			<p class="font-boogaloo text-base tracking-[0.15em] text-lilac uppercase">You're in the audience</p>
 			<p class="font-boogaloo text-2xl text-cream">
 				{#if waitingForShow}
 					The show hasn't started yet. Your signs go up once it does!
@@ -65,7 +55,7 @@
 			</p>
 		</div>
 
-		<div class="h-px bg-gradient-to-r from-transparent via-game-yellow/40 to-transparent"></div>
+		<div class="h-px bg-gradient-to-r from-transparent via-plate/40 to-transparent"></div>
 
 		<!-- Quick cheers -->
 		<div class="grid grid-cols-2 gap-3">
@@ -81,7 +71,7 @@
 			{/each}
 		</div>
 
-		<div class="h-px bg-gradient-to-r from-transparent via-game-yellow/40 to-transparent"></div>
+		<div class="h-px bg-gradient-to-r from-transparent via-plate/40 to-transparent"></div>
 
 		<!-- Custom message -->
 		<form onsubmit={submit} class="flex flex-col gap-3">
@@ -96,7 +86,7 @@
 				maxlength={MAX_LENGTH}
 				placeholder="Type a message…"
 				autocomplete="off"
-				class="w-full rounded-xl border-2 border-game-yellow/60 bg-navy px-5 py-3 font-boogaloo text-xl text-cream placeholder:text-teal/60 outline-none transition focus:border-game-yellow focus:ring-2 focus:ring-game-yellow/30"
+				class="w-full rounded-xl border-2 border-plate/60 bg-stage-dark px-5 py-3 font-boogaloo text-xl text-cream placeholder:text-lilac/60 outline-none transition focus:border-plate focus:ring-2 focus:ring-plate/30"
 			/>
 			<button type="submit" disabled={!message.trim() || !canSend} class="btn">
 				{coolingDown ? 'SIGN IS UP!' : 'SEND'}

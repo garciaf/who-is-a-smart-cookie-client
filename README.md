@@ -185,18 +185,55 @@ Pushes a notification toast that auto-dismisses after 3 seconds.
 
 ---
 
-## Color Palette
+## Look & Feel
 
-All colors are defined as Tailwind theme tokens in `src/routes/layout.css`.
+Everything below lives in `src/lib/styles/theme.css`. Change the look of the whole app from there.
 
-| Name         | Token            | Hex       | Usage                               |
-|--------------|------------------|-----------|-------------------------------------|
-| Navy         | `bg-navy`        | `#1a1a2e` | Page background, dark surfaces      |
-| Cream        | `bg-cream`       | `#f8e8c8` | Cards, panels, question background  |
-| Game Yellow  | `bg-game-yellow` | `#f5c800` | Headings, borders, highlights       |
-| Magenta      | `bg-magenta`     | `#d4006a` | CTA buttons, category labels        |
-| Game Orange  | `bg-game-orange` | `#f06000` | Accents, secondary highlights       |
-| Teal         | `bg-teal`        | `#007a8c` | Subtitle text, decorative accents   |
-| Game Green   | `bg-game-green`  | `#2c9e58` | Validate / confirm actions          |
-| Cookie       | `bg-cookie`      | `#e0a464` | Cookie glow, warm accents           |
-| Gray         | `bg-gray`        | `#6b6b80` | Disabled / inactive states          |
+### Font
+
+**Boogaloo** is the only font of the app, for every text: titles, labels, buttons and numbers. It is loaded from `static/fonts/Boogaloo-Regular.ttf` in `src/app.html`, and exposed as `font-boogaloo` / `font-body`.
+
+### Color Palette
+
+The client uses the game's **Smart Cookie Stage** palette from the Figma design (see the game's README): a purple stage, cream plates and gold podiums. Phone and big screen look like one show.
+
+| Name             | Token                 | Hex       | Usage                                             |
+|------------------|-----------------------|-----------|---------------------------------------------------|
+| Stage            | `bg-stage`            | `#613f80` | Page background (with a plum spotlight in the middle) |
+| Stage Dark       | `bg-stage-dark`       | `#4f2972` | Cards, panels, inputs                             |
+| Stage Shadow     | `#2e1446`             | `#2e1446` | Solid shadow under cards, titles and cookies      |
+| Plum             | `bg-plum`             | `#825ca4` | Spotlight glow, "reconnecting" banner             |
+| Lavender         | `bg-lavender`         | `#9b76bc` | Secondary buttons, picked answers, checkboxes     |
+| Lavender Dark    | `bg-lavender-dark`    | `#6838a1` | Shadow under lavender                             |
+| Lilac            | `text-lilac`          | `#c39de0` | Small labels, placeholders, toggle borders        |
+| Gold             | `bg-gold`             | `#ffe496` | Picked player / bet amount                        |
+| Gold Dark        | `bg-gold-dark`        | `#ecba2b` | Shadow under gold                                 |
+| Plate            | `border-plate`        | `#f1e1aa` | Card borders, dividers (like the name plates)     |
+| Title            | `text-title`          | `#ffd43b` | Big titles and numbers (the logo's yellow)        |
+| Cream            | `bg-cream`            | `#fdf2c6` | Question and answer cards, text on purple         |
+| Ink              | `text-ink`            | `#222222` | Text on light cards and on the white button       |
+| Curtain Red      | `text-curtain-red`    | `#f83756` | Category labels; dark `#cb1b2e` for "disconnected" |
+| Game Green       | `bg-game-green`       | `#2c9e58` | Correct / confirm (dark `#1a6638`)                |
+| Gray             | `bg-gray`             | `#8b7aa0` | Disabled / inactive states (dark `#5e4d75`)       |
+
+Components use the **semantic tokens**, so you can re-skin the app by pointing them at other colours:
+
+| Semantic token | Points to                | Used for                                      |
+|----------------|--------------------------|-----------------------------------------------|
+| `background`   | Stage                    | Page                                          |
+| `surface`      | Stage Dark               | Toggles, dark panels                          |
+| `foreground`   | White                    | Text on purple                                |
+| `primary`      | White (shadow Lilac)     | Main button: the game's white pill, ink text  |
+| `secondary`    | Lavender                 | Second button ("Cheer"), picked answers       |
+| `accent`       | Gold                     | Picked players and bet amounts                |
+
+The home screen shows the game's logo (`static/images/logo.webp`, exported from the game's `menu_logo.png`). The old stars and bursts are gone from every screen. Their images are still in `static/images/` if they come back.
+
+### Cookie avatars
+
+Each player picks a cookie when joining (`AvatarPicker`), and it then replaces the default cookie icon on every screen (`PlayerCookie`) and in the browser tab. Players on the betting screen show their cookie too.
+
+- Previews: `static/images/avatars/<id>.webp` (160 px, 45 cookies). The list is in `src/lib/avatars.json`.
+- They are rendered from the game, so they match the big screen exactly. To regenerate them after adding a cookie or glaze colour, run this from the game project: `godot --path . -s res://tools/cookies/render_avatars.gd -- ../who-is-the-smart-cookie-client`
+- Glaze colours of the round, star and square cookies: lilac `#cdb8f2`, pink `#f7a3c0`, sky `#a9d8f5`, mint `#a9e0c4`, lemon `#fbe08a`, white `#fff7ec`, chocolate `#8e5440`, orange `#f9a05a`, strawberry `#f06e6e`, teal `#78d6cd`, lime `#b4e66e`.
+- A player's colour (the dot next to their name) comes from the game: red, blue, green, yellow, orange, violet, teal or magenta.

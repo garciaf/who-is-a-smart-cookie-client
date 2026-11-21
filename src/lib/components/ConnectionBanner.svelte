@@ -9,9 +9,9 @@
 
 {#if visible}
 	<div
-		class="absolute inset-x-0 top-0 z-50 flex items-center justify-center gap-2 px-4 py-2 text-center font-paytone text-sm text-cream"
-		class:bg-game-orange-dark={status.reconnecting}
-		class:bg-magenta-dark={!status.reconnecting}
+		class="absolute inset-x-0 top-0 z-50 flex items-center justify-center gap-2 px-4 py-2 text-center font-boogaloo text-lg text-cream"
+		class:bg-plum={status.reconnecting}
+		class:bg-curtain-red-dark={!status.reconnecting}
 	>
 		<span class="h-2 w-2 animate-pulse rounded-full bg-cream"></span>
 		{#if status.lastError}

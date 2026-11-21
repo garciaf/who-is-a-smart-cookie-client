@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { asset } from '$app/paths';
 	import { SvelteSet } from 'svelte/reactivity';
 	import socket from '$lib/socket';
 	import { settingsStore } from '$lib/stores/player';
@@ -33,38 +32,6 @@
 	}
 </script>
 
-<!-- Decorative accents -->
-<img
-	src={asset('/images/burst-orange.png')}
-	alt=""
-	aria-hidden="true"
-	class="absolute -top-16 -left-16 h-56 w-56 opacity-80"
-/>
-<img
-	src={asset('/images/burst-teal.png')}
-	alt=""
-	aria-hidden="true"
-	class="absolute -right-16 -bottom-16 h-56 w-56 opacity-80"
-/>
-<img
-	src={asset('/images/star-yellow.png')}
-	alt=""
-	aria-hidden="true"
-	class="absolute top-8 right-16 h-10 w-10 rotate-12 opacity-90"
-/>
-<img
-	src={asset('/images/star-magenta.png')}
-	alt=""
-	aria-hidden="true"
-	class="absolute bottom-12 left-16 h-8 w-8 -rotate-6 opacity-80"
-/>
-<img
-	src={asset('/images/star-teal.png')}
-	alt=""
-	aria-hidden="true"
-	class="absolute top-1/3 right-8 h-7 w-7 rotate-30 opacity-70"
-/>
-
 <!-- Content -->
 <div
 	class="relative z-10 flex h-full flex-col items-center overflow-hidden px-5 pt-8 pb-[max(1rem,env(safe-area-inset-bottom))]"
@@ -76,13 +43,13 @@
 		<!-- Scrollable list area -->
 		<div class="flex min-h-0 flex-1 flex-col gap-5 overflow-y-auto pb-4">
 			<!-- Prompt panel -->
-			<div class="w-full rounded-3xl bg-cream px-6 py-6 shadow-[0_6px_0_#8a7000]">
+			<div class="w-full rounded-3xl bg-cream px-6 py-6 shadow-[0_6px_0_#2e1446]">
 				<p
-					class="mb-3 text-center font-limelight text-base tracking-[0.2em] text-magenta uppercase"
+					class="mb-3 text-center font-boogaloo text-xl tracking-[0.2em] text-curtain-red uppercase"
 				>
 					Game Settings
 				</p>
-				<p class="text-center font-boogaloo text-3xl leading-snug text-navy">
+				<p class="text-center font-boogaloo text-3xl leading-snug text-ink">
 					Pick your difficulties and categories!
 				</p>
 			</div>
@@ -90,8 +57,8 @@
 			<!-- Difficulties -->
 			<div class="flex flex-col gap-3">
 				<div class="flex items-baseline justify-between gap-3">
-					<p class="font-limelight text-sm tracking-[0.2em] text-cream uppercase">Difficulties</p>
-					<p class="font-boogaloo text-base text-game-yellow">Pick one or more</p>
+					<p class="font-boogaloo text-lg tracking-[0.2em] text-cream uppercase">Difficulties</p>
+					<p class="font-boogaloo text-base text-title">Pick one or more</p>
 				</div>
 				<div class="grid grid-cols-2 gap-3 sm:grid-cols-3">
 					{#each $settingsStore.difficulties as difficulty (difficulty.key)}
@@ -122,8 +89,8 @@
 			<!-- Categories -->
 			<div class="flex flex-col gap-3">
 				<div class="flex items-baseline justify-between gap-3">
-					<p class="font-limelight text-sm tracking-[0.2em] text-cream uppercase">Categories</p>
-					<p class="font-boogaloo text-base text-game-yellow">Pick one or more</p>
+					<p class="font-boogaloo text-lg tracking-[0.2em] text-cream uppercase">Categories</p>
+					<p class="font-boogaloo text-base text-title">Pick one or more</p>
 				</div>
 				<div class="grid grid-cols-1 gap-3 sm:grid-cols-2">
 					{#each $settingsStore.categories as category (category.key)}

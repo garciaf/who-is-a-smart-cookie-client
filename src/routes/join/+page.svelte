@@ -1,7 +1,8 @@
 <script lang="ts">
+	import PlayerCookie from '$lib/components/PlayerCookie.svelte';
 	import { onMount } from 'svelte';
 	import { goto } from '$app/navigation';
-	import { asset, resolve } from '$app/paths';
+	import { resolve } from '$app/paths';
 	import socket from '$lib/socket';
 	import { playerStore, lobbyStatus, unknownLobbyStatus } from '$lib/stores/player';
 
@@ -27,40 +28,27 @@
 	});
 </script>
 
-<!-- Corner accents -->
-<img src={asset('/images/burst-teal.png')}    alt="" aria-hidden="true" class="absolute -top-16 -left-16 h-56 w-56 opacity-80" />
-<img src={asset('/images/burst-magenta.png')} alt="" aria-hidden="true" class="absolute -bottom-12 -right-12 h-56 w-56 opacity-80" />
-<img src={asset('/images/star-yellow.png')}   alt="" aria-hidden="true" class="absolute top-8 right-16 h-10 w-10 rotate-12 opacity-90" />
-<img src={asset('/images/star-orange.png')}   alt="" aria-hidden="true" class="absolute bottom-12 left-16 h-8 w-8 -rotate-6 opacity-80" />
-<img src={asset('/images/star-teal.png')}     alt="" aria-hidden="true" class="absolute top-1/4 right-8 h-7 w-7 rotate-30 opacity-70" />
-
 <!-- Center card -->
 <div class="relative z-10 flex h-full items-center justify-center px-4">
-	<div class="w-full max-w-md rounded-3xl border-4 border-game-yellow bg-navy/90 px-8 py-10 shadow-[0_8px_0_#8a7000] backdrop-blur-sm">
+	<div class="w-full max-w-md rounded-3xl border-4 border-plate bg-stage-dark/90 px-8 py-10 shadow-[0_8px_0_#2e1446] backdrop-blur-sm">
 
 		<!-- Cookie icon -->
 		<div class="mb-4 flex justify-center">
-			<img
-				src={asset('/images/cookie.svg')}
-				alt="Cookie"
-				class="pixel-perfect h-16 w-16 drop-shadow-[0_4px_0_#7a3a14]"
-			/>
+			<PlayerCookie class="h-16 w-16 drop-shadow-[0_4px_0_#2e1446]" />
 		</div>
 
 		<!-- Title badge -->
-		<p class="mb-1 text-center font-limelight text-xs tracking-[0.25em] text-teal uppercase">
+		<p class="mb-1 text-center font-boogaloo text-base tracking-[0.15em] text-lilac uppercase">
 			ENTER YOUR
 		</p>
 		<div class="mb-8 flex items-center justify-center gap-3">
-			<img src={asset('/images/star-yellow.png')} alt="" aria-hidden="true" class="pixel-perfect h-6 w-6" />
-			<span class="font-monoton text-2xl tracking-widest text-game-yellow drop-shadow-[0_2px_0_#8a7000]">
+			<span class="font-boogaloo text-3xl tracking-widest text-title drop-shadow-[0_2px_0_#2e1446]">
 				LOBBY CODE
 			</span>
-			<img src={asset('/images/star-yellow.png')} alt="" aria-hidden="true" class="pixel-perfect h-6 w-6" />
 		</div>
 
 		<!-- Divider -->
-		<div class="mb-8 h-px bg-gradient-to-r from-transparent via-game-yellow/40 to-transparent"></div>
+		<div class="mb-8 h-px bg-gradient-to-r from-transparent via-plate/40 to-transparent"></div>
 
 		<!-- Form -->
 		<form onsubmit={joinLobby} class="flex flex-col gap-6">
@@ -76,7 +64,7 @@
 					placeholder="Enter lobby code…"
 					required
 					autocomplete="off"
-					class="w-full rounded-xl border-2 border-game-yellow/60 bg-navy px-5 py-3 font-boogaloo text-xl text-cream placeholder:text-teal/60 outline-none transition focus:border-game-yellow focus:ring-2 focus:ring-game-yellow/30 uppercase tracking-widest text-center"
+					class="w-full rounded-xl border-2 border-plate/60 bg-stage-dark px-5 py-3 font-boogaloo text-xl text-cream placeholder:text-lilac/60 outline-none transition focus:border-plate focus:ring-2 focus:ring-plate/30 uppercase tracking-widest text-center"
 				/>
 			</div>
 
@@ -92,7 +80,7 @@
 					placeholder="Enter your name…"
 					required
 					autocomplete="off"
-					class="w-full rounded-xl border-2 border-game-yellow/60 bg-navy px-5 py-3 font-boogaloo text-xl text-cream placeholder:text-teal/60 outline-none transition focus:border-game-yellow focus:ring-2 focus:ring-game-yellow/30"
+					class="w-full rounded-xl border-2 border-plate/60 bg-stage-dark px-5 py-3 font-boogaloo text-xl text-cream placeholder:text-lilac/60 outline-none transition focus:border-plate focus:ring-2 focus:ring-plate/30"
 				/>
 			</div>
 

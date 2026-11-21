@@ -6,6 +6,8 @@ export interface GamePlayer {
 	name: string;
 	balance: number;
 	color: string;
+	/** Id of the player's cookie (see $lib/avatars). */
+	avatar?: string;
 }
 
 export interface Category {
@@ -38,6 +40,8 @@ export interface LobbyStatus {
 	gameStarted: boolean;
 	playerCount: number;
 	maxPlayerCount: number;
+	/** Cookies other players already picked. */
+	takenAvatars: string[];
 }
 
 export interface ConnectionStatus {
@@ -54,7 +58,8 @@ export const playerStore = persisted(
 		id: null as string | null,
 		lobbyId: '',
 		name: 'Guest',
-		balance: 0
+		balance: 0,
+		avatar: ''
 	},
 	{ storage: 'session' }
 );
@@ -113,7 +118,8 @@ export const unknownLobbyStatus: LobbyStatus = {
 	canJoinAsPlayer: false,
 	gameStarted: false,
 	playerCount: 0,
-	maxPlayerCount: 0
+	maxPlayerCount: 0,
+	takenAvatars: []
 };
 export const lobbyStatus = writable<LobbyStatus>(unknownLobbyStatus);
 

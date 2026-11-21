@@ -4,52 +4,58 @@
  */
 
 @theme {
-	/* ---- Palette (raw colors) ---- */
-	--color-navy: #1a1a2e;
-	--color-cream: #f8e8c8;
-	--color-cookie: #e0a464;
-	--color-cookie-ring: #c68442;
-	--color-cookie-dark: #7a3a14;
-	--color-game-green: #2c9e58;
+	/* ---- Palette (raw colors) ----
+	 * The game's "Smart Cookie Stage" palette, from the Figma design:
+	 * a purple theatre with lilac curtains, cream plates and gold podiums. */
+	--color-stage: #613f80; /* back wall: page background */
+	--color-stage-dark: #4f2972; /* stage floor: cards, panels */
+	--color-stage-shadow: #2e1446; /* solid shadows under cards and titles */
+	--color-plum: #825ca4; /* podium fronts */
+	--color-lavender: #9b76bc; /* name plates: secondary buttons, toggles */
+	--color-lavender-dark: #6838a1; /* curtain shadow */
+	--color-lilac: #c39de0; /* curtains: small labels, glows */
+	--color-gold: #ffe496; /* podium body: picked items */
+	--color-gold-dark: #ecba2b;
+	--color-plate: #f1e1aa; /* plate borders: card borders, dividers */
+	--color-title: #ffd43b; /* logo yellow: big titles and numbers */
+	--color-cream: #fdf2c6; /* text on purple, light panels */
+	--color-ink: #222222; /* cookie faces: text on light colours */
+	--color-curtain-red: #f83756; /* menu curtain: category labels, errors */
+	--color-curtain-red-dark: #cb1b2e;
+	--color-game-green: #2c9e58; /* correct / confirm */
 	--color-game-green-dark: #1a6638;
-	--color-magenta: #d4006a;
-	--color-magenta-dark: #7a003d;
-	--color-game-orange: #f06000;
-	--color-game-orange-dark: #8a3500;
-	--color-game-yellow: #f5c800;
-	--color-game-yellow-dark: #8a7000;
-	--color-teal: #007a8c;
-	--color-teal-dark: #00525e;
-	--color-gray: #6b6b80;
-	--color-gray-dark: #4a4a5e;
+	--color-gray: #8b7aa0;
+	--color-gray-dark: #5e4d75;
 
 	/* ---- Semantic colors (what components use; repoint these to re-skin) ---- */
-	--color-background: var(--color-navy);
-	--color-foreground: var(--color-cream);
-	--color-primary: var(--color-magenta);
-	--color-primary-dark: var(--color-magenta-dark);
-	--color-secondary: var(--color-game-green);
-	--color-secondary-dark: var(--color-game-green-dark);
-	--color-accent: var(--color-game-yellow);
-	--color-accent-dark: var(--color-game-yellow-dark);
+	--color-background: var(--color-stage);
+	--color-surface: var(--color-stage-dark);
+	--color-foreground: #ffffff;
+	--color-primary: #ffffff; /* the game's white pill button */
+	--color-primary-dark: var(--color-lilac);
+	--color-on-primary: var(--color-ink);
+	--color-secondary: var(--color-lavender);
+	--color-secondary-dark: var(--color-lavender-dark);
+	--color-on-secondary: #ffffff;
+	--color-accent: var(--color-gold);
+	--color-accent-dark: var(--color-gold-dark);
 
-	/* ---- Fonts ---- */
+	/* ---- Font ----
+	 * Boogaloo is the only font of the app, for every text. */
 	--font-boogaloo: 'Boogaloo', sans-serif;
-	--font-limelight: 'Limelight', cursive;
-	--font-monoton: 'Monoton', cursive;
-	--font-paytone: 'Paytone One', sans-serif;
-
-	/* Semantic fonts */
 	--font-body: var(--font-boogaloo);
-	--font-heading: var(--font-limelight);
-	--font-button: var(--font-paytone);
-	--font-display: var(--font-monoton);
 }
 
 /* ---- Base defaults ---- */
 @layer base {
 	body {
 		@apply bg-background font-body text-foreground;
+		/* Soft spotlight in the middle of the stage, like the main menu arch. */
+		background-image: radial-gradient(
+			ellipse at 50% 35%,
+			var(--color-plum) 0%,
+			var(--color-stage) 65%
+		);
 	}
 }
 
@@ -82,7 +88,8 @@
 @utility btn {
 	background-color: var(--btn-bg, var(--color-primary));
 	box-shadow: 0 6px 0 var(--btn-shadow, var(--color-primary-dark));
-	@apply w-full cursor-pointer rounded-full py-4 font-button text-2xl text-foreground transition-transform;
+	color: var(--btn-fg, var(--color-on-primary));
+	@apply w-full cursor-pointer rounded-full py-4 font-body text-3xl uppercase transition-transform;
 
 	&:hover {
 		@apply brightness-110;
@@ -100,16 +107,19 @@
 @utility btn-secondary {
 	--btn-bg: var(--color-secondary);
 	--btn-shadow: var(--color-secondary-dark);
+	--btn-fg: var(--color-on-secondary);
 }
 
 @utility btn-accent {
 	--btn-bg: var(--color-accent);
 	--btn-shadow: var(--color-accent-dark);
+	--btn-fg: var(--color-ink);
 }
 
 @utility btn-outline {
 	--btn-bg: transparent;
 	--btn-shadow: transparent;
+	--btn-fg: var(--color-foreground);
 	border: 2px solid var(--color-primary);
 
 	&:hover {
@@ -124,22 +134,23 @@
  * Size (padding / text) is left to the markup.
  */
 @utility option {
-	@apply w-full cursor-pointer rounded-2xl border-4 border-accent bg-foreground font-body text-background transition-all;
-	box-shadow: 0 4px 0 var(--color-accent-dark);
+	@apply w-full cursor-pointer rounded-2xl border-4 border-plate bg-cream font-body text-ink transition-all;
+	box-shadow: 0 4px 0 var(--color-stage-shadow);
 
 	&:hover {
 		@apply brightness-95;
 	}
 	&:active {
 		@apply translate-y-1;
-		box-shadow: 0 1px 0 var(--color-accent-dark);
+		box-shadow: 0 1px 0 var(--color-stage-shadow);
 	}
 	&[aria-pressed='true'],
 	&:has(input:checked) {
-		border-color: var(--color-primary);
-		background-color: var(--option-selected-bg, var(--color-foreground));
-		color: var(--option-selected-fg, var(--color-background));
-		box-shadow: 0 4px 0 var(--color-primary-dark);
+		/* Picked: lavender like the game's name plates, so it stands out from the cream cards. */
+		border-color: var(--color-secondary-dark);
+		background-color: var(--option-selected-bg, var(--color-secondary));
+		color: var(--option-selected-fg, var(--color-on-secondary));
+		box-shadow: 0 4px 0 var(--color-stage-shadow);
 	}
 	&:has(input:focus-visible) {
 		@apply outline-4 outline-offset-2 outline-accent;
@@ -147,8 +158,8 @@
 }
 
 @utility option-filled {
-	--option-selected-bg: var(--color-primary);
-	--option-selected-fg: var(--color-foreground);
+	--option-selected-bg: var(--color-secondary);
+	--option-selected-fg: var(--color-on-secondary);
 }
 
 /* ---- Checkbox box (multi-select option cards) ----
@@ -160,10 +171,10 @@
  * The box must directly follow the input. The check icon uses currentColor.
  */
 @utility checkbox {
-	@apply flex size-7 shrink-0 items-center justify-center rounded-lg border-4 border-accent-dark bg-foreground text-transparent transition-all;
+	@apply flex size-7 shrink-0 items-center justify-center rounded-lg border-4 border-lavender bg-white text-transparent transition-all;
 
 	input:checked + & {
-		@apply border-foreground bg-foreground text-primary;
+		@apply border-white bg-white text-lavender-dark;
 	}
 }
 
@@ -172,10 +183,10 @@
  *        add `toggle-primary` to highlight with the primary color instead of accent.
  */
 @utility toggle {
-	@apply cursor-pointer border-2 border-teal/40 bg-background text-foreground transition-all;
+	@apply cursor-pointer border-2 border-lilac/40 bg-surface text-foreground transition-all;
 
 	&:hover {
-		@apply border-teal bg-teal/10;
+		@apply border-lilac bg-lilac/10;
 	}
 	&[aria-pressed='true'] {
 		border-color: var(--toggle-color, var(--color-accent));
@@ -190,6 +201,6 @@
 }
 
 @utility toggle-primary {
-	--toggle-color: var(--color-primary);
-	--toggle-shadow: var(--color-primary-dark);
+	--toggle-color: var(--color-title);
+	--toggle-shadow: var(--color-gold-dark);
 }
