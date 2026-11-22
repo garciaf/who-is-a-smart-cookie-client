@@ -38,11 +38,11 @@
 		</div>
 
 		<!-- Title badge -->
-		<p class="mb-1 text-center font-boogaloo text-base tracking-[0.15em] text-lilac uppercase">
+		<p class="mb-1 text-center font-body text-base tracking-[0.15em] text-lilac uppercase">
 			ENTER YOUR
 		</p>
 		<div class="mb-8 flex items-center justify-center gap-3">
-			<span class="font-boogaloo text-3xl tracking-widest text-title drop-shadow-[0_2px_0_#2e1446]">
+			<span class="font-body text-3xl tracking-widest text-title drop-shadow-[0_2px_0_#2e1446]">
 				LOBBY CODE
 			</span>
 		</div>
@@ -53,7 +53,7 @@
 		<!-- Form -->
 		<form onsubmit={joinLobby} class="flex flex-col gap-6">
 			<div class="flex flex-col gap-2">
-				<label for="lobby_code" class="text-center font-boogaloo text-xl text-cream">
+				<label for="lobby_code" class="text-center font-body text-xl text-cream">
 					LOBBY CODE
 				</label>
 				<input
@@ -64,12 +64,12 @@
 					placeholder="Enter lobby code…"
 					required
 					autocomplete="off"
-					class="w-full rounded-xl border-2 border-plate/60 bg-stage-dark px-5 py-3 font-boogaloo text-xl text-cream placeholder:text-lilac/60 outline-none transition focus:border-plate focus:ring-2 focus:ring-plate/30 uppercase tracking-widest text-center"
+					class="w-full rounded-xl border-2 border-plate/60 bg-stage-dark px-5 py-3 font-body text-xl text-cream placeholder:text-lilac/60 outline-none transition focus:border-plate focus:ring-2 focus:ring-plate/30 uppercase tracking-widest text-center"
 				/>
 			</div>
 
 			<div class="flex flex-col gap-2">
-				<label for="player_name" class="text-center font-boogaloo text-xl text-cream">
+				<label for="player_name" class="text-center font-body text-xl text-cream">
 					WHAT'S YOUR NAME, CONTESTANT?
 				</label>
 				<input
@@ -80,7 +80,7 @@
 					placeholder="Enter your name…"
 					required
 					autocomplete="off"
-					class="w-full rounded-xl border-2 border-plate/60 bg-stage-dark px-5 py-3 font-boogaloo text-xl text-cream placeholder:text-lilac/60 outline-none transition focus:border-plate focus:ring-2 focus:ring-plate/30"
+					class="w-full rounded-xl border-2 border-plate/60 bg-stage-dark px-5 py-3 font-body text-xl text-cream placeholder:text-lilac/60 outline-none transition focus:border-plate focus:ring-2 focus:ring-plate/30"
 				/>
 			</div>
 

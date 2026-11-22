@@ -26,20 +26,20 @@
 		<!-- Header -->
 		<div class="flex flex-col items-center gap-3">
 			<PlayerCookie class="h-14 w-14 drop-shadow-[0_4px_0_#2e1446]" />
-			<p class="font-boogaloo text-base tracking-[0.15em] text-lilac uppercase">Betting Round</p>
+			<p class="font-body text-base tracking-[0.15em] text-lilac uppercase">Betting Round</p>
 			
 		</div>
 
 		<!-- Balance -->
 		<div class="rounded-2xl border-2 border-plate/40 bg-stage-dark px-5 py-3 text-center">
-			<p class="font-boogaloo text-base tracking-widest text-lilac uppercase mb-1">Your balance</p>
-			<p class="font-boogaloo text-4xl text-title drop-shadow-[0_2px_0_#2e1446]">
-				{$playerStore.balance} <span class="font-boogaloo text-xl text-cream">pts</span>
+			<p class="font-display text-lg tracking-widest text-lilac uppercase mb-1">Your balance</p>
+			<p class="font-display text-5xl text-title drop-shadow-[0_2px_0_#2e1446]">
+				{$playerStore.balance} <span class="font-display text-2xl text-cream">pts</span>
 			</p>
 			
 		</div>
 		<div class="flex flex-col items-center gap-3">
-			<p class="font-boogaloo text-lg text-cream uppercase">
+			<p class="font-display text-xl tracking-wide text-cream uppercase">
 					{$questionStore.category} &bull; {$questionStore.difficulty}
 				</p>
 
@@ -49,7 +49,7 @@
 		<!-- Player selection -->
 		<div class="flex flex-col gap-3">
 			
-			<p class="text-center font-boogaloo text-xl text-cream">WHO DO YOU THINK IS THE SMART COOKIE?</p>
+			<p class="text-center font-body text-xl text-cream">WHO DO YOU THINK IS THE SMART COOKIE?</p>
 			<!-- Three per row from five players on, so the bet amounts stay on screen. -->
 			<div class="grid gap-3 {compact ? 'grid-cols-3' : 'grid-cols-2'}">
 				{#each $gameStore.players as player (player.id)}
@@ -57,7 +57,7 @@
 					<button
 						type="button"
 						onclick={() => (selectedPlayer = player.id)}
-						class="toggle group flex min-w-0 flex-col items-center gap-1 rounded-2xl px-2 pt-3 pb-2 font-boogaloo {compact ? 'text-lg' : 'text-xl'}"
+						class="toggle group flex min-w-0 flex-col items-center gap-1 rounded-2xl px-2 pt-3 pb-2 font-display {compact ? 'text-xl' : 'text-2xl'}"
 						aria-pressed={picked}
 						aria-label="Bet on {player.name}"
 					>
@@ -83,13 +83,13 @@
 
 		<!-- Bet amount -->
 		<div class="flex flex-col gap-3">
-			<p class="text-center font-boogaloo text-xl text-cream">HOW MANY POINTS WILL YOU RISK?</p>
+			<p class="text-center font-body text-xl text-cream">HOW MANY POINTS WILL YOU RISK?</p>
 			<div class="flex gap-2">
 				{#each $gameStore.betPresets as amount (amount)}
 					<button
 						type="button"
 						onclick={() => bet = amount}
-						class="toggle toggle-primary flex-1 rounded-xl py-3 font-boogaloo text-xl"
+						class="toggle toggle-primary flex-1 rounded-xl py-3 font-display text-2xl"
 						aria-pressed={bet === amount}
 					>
 						{amount}

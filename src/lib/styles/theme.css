@@ -40,10 +40,12 @@
 	--color-accent: var(--color-gold);
 	--color-accent-dark: var(--color-gold-dark);
 
-	/* ---- Font ----
-	 * Boogaloo is the only font of the app, for every text. */
-	--font-boogaloo: 'Boogaloo', sans-serif;
-	--font-body: var(--font-boogaloo);
+	/* ---- Fonts (same pair as the game) ----
+	 * font-body:    Baloo 2, for all text (questions, answers, messages, inputs).
+	 * font-display: BBH Bogle (capitals only), for action buttons, the balance and points,
+	 *               player names and the question's category / difficulty line. */
+	--font-body: 'Baloo 2', sans-serif;
+	--font-display: 'BBH Bogle', sans-serif;
 }
 
 /* ---- Base defaults ---- */
@@ -89,7 +91,7 @@
 	background-color: var(--btn-bg, var(--color-primary));
 	box-shadow: 0 6px 0 var(--btn-shadow, var(--color-primary-dark));
 	color: var(--btn-fg, var(--color-on-primary));
-	@apply w-full cursor-pointer rounded-full py-4 font-body text-3xl uppercase transition-transform;
+	@apply w-full cursor-pointer rounded-full py-4 font-display text-3xl uppercase transition-transform;
 
 	&:hover {
 		@apply brightness-110;

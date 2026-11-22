@@ -4,9 +4,9 @@ A mobile-first trivia game show built with SvelteKit.
 
 ## Screens
 
-| Home | Lobby | Multiple Choice | Open Answer | Betting |
-|------|-------|-----------------|-------------|---------|
-| ![Home](docs/home.png) | ![Lobby](docs/lobby.png) | ![Multiple Choice](docs/question.png) | ![Open Answer](docs/question-open.png) | ![Betting](docs/bet.png) |
+| Home | Lobby | Pick your cookie | Multiple Choice | Open Answer | Betting |
+|------|-------|------------------|-----------------|-------------|---------|
+| ![Home](docs/home.png) | ![Lobby](docs/lobby.png) | ![Pick your cookie](docs/pick-cookie.png) | ![Multiple Choice](docs/question.png) | ![Open Answer](docs/question-open.png) | ![Betting](docs/bet.png) |
 
 ## Creating a project
 
@@ -189,9 +189,14 @@ Pushes a notification toast that auto-dismisses after 3 seconds.
 
 Everything below lives in `src/lib/styles/theme.css`. Change the look of the whole app from there.
 
-### Font
+### Fonts
 
-**Boogaloo** is the only font of the app, for every text: titles, labels, buttons and numbers. It is loaded from `static/fonts/Boogaloo-Regular.ttf` in `src/app.html`, and exposed as `font-boogaloo` / `font-body`.
+The client uses the same pair as the game:
+
+- **Baloo 2 SemiBold** (`font-body`): all text, including questions, answers, messages, labels and inputs. File: `static/fonts/Baloo2-SemiBold.woff2`, cut down to Latin letters with accents (23 KB) and with the same trimmed line height as the game's copy.
+- **BBH Bogle** (`font-display`, capitals only): every action button (`btn`), bet amounts and quick cheers, "Your balance" and the points, player names, and the question's category / difficulty line. File: `static/fonts/BBHBogle-Regular.woff2`.
+
+Both are loaded in `src/app.html` and defined in `src/lib/styles/theme.css`. Their licences are next to them in `static/fonts/`.
 
 ### Color Palette
 

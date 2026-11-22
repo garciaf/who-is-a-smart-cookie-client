@@ -45,11 +45,11 @@
 			<!-- Prompt panel -->
 			<div class="w-full rounded-3xl bg-cream px-6 py-6 shadow-[0_6px_0_#2e1446]">
 				<p
-					class="mb-3 text-center font-boogaloo text-xl tracking-[0.2em] text-curtain-red uppercase"
+					class="mb-3 text-center font-body text-xl tracking-[0.2em] text-curtain-red uppercase"
 				>
 					Game Settings
 				</p>
-				<p class="text-center font-boogaloo text-3xl leading-snug text-ink">
+				<p class="text-center font-body text-3xl leading-snug text-ink">
 					Pick your difficulties and categories!
 				</p>
 			</div>
@@ -57,8 +57,8 @@
 			<!-- Difficulties -->
 			<div class="flex flex-col gap-3">
 				<div class="flex items-baseline justify-between gap-3">
-					<p class="font-boogaloo text-lg tracking-[0.2em] text-cream uppercase">Difficulties</p>
-					<p class="font-boogaloo text-base text-title">Pick one or more</p>
+					<p class="font-body text-lg tracking-[0.2em] text-cream uppercase">Difficulties</p>
+					<p class="font-body text-base text-title">Pick one or more</p>
 				</div>
 				<div class="grid grid-cols-2 gap-3 sm:grid-cols-3">
 					{#each $settingsStore.difficulties as difficulty (difficulty.key)}
@@ -89,8 +89,8 @@
 			<!-- Categories -->
 			<div class="flex flex-col gap-3">
 				<div class="flex items-baseline justify-between gap-3">
-					<p class="font-boogaloo text-lg tracking-[0.2em] text-cream uppercase">Categories</p>
-					<p class="font-boogaloo text-base text-title">Pick one or more</p>
+					<p class="font-body text-lg tracking-[0.2em] text-cream uppercase">Categories</p>
+					<p class="font-body text-base text-title">Pick one or more</p>
 				</div>
 				<div class="grid grid-cols-1 gap-3 sm:grid-cols-2">
 					{#each $settingsStore.categories as category (category.key)}

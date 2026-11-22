@@ -17,14 +17,14 @@
 
 	<!-- Question panel -->
 	<div class="w-full max-w-lg rounded-3xl bg-cream px-6 py-6 shadow-[0_6px_0_#2e1446] sm:max-w-2xl">
-		<p class="mb-3 text-center font-boogaloo text-xl tracking-[0.2em] text-curtain-red uppercase">
+		<p class="mb-3 text-center font-display text-xl tracking-[0.2em] text-curtain-red uppercase">
 			{$questionStore.category} &bull; {$questionStore.difficulty}
 		</p>
-		<p class="text-center font-boogaloo text-3xl leading-snug text-ink">
+		<p class="text-center font-body text-3xl leading-snug text-ink">
 			{$questionStore.text}
 		</p>
 		{#if $questionStore.hasImage}
-			<p class="mt-3 text-center font-boogaloo text-lg tracking-wide text-ink">
+			<p class="mt-3 text-center font-body text-lg tracking-wide text-ink">
 				(Look at the screen!)
 			</p>
 		{/if}
@@ -36,7 +36,7 @@
 			bind:value={answer}
 			placeholder="Give your answer here..."
 			rows="3"
-			class="w-full resize-none rounded-t-2xl border-4 border-b-2 border-plate bg-stage-dark px-5 py-4 font-boogaloo text-2xl leading-snug text-title outline-none placeholder:text-lilac/60 [field-sizing:content]"
+			class="w-full resize-none rounded-t-2xl border-4 border-b-2 border-plate bg-stage-dark px-5 py-4 font-body text-2xl leading-snug text-title outline-none placeholder:text-lilac/60 [field-sizing:content]"
 		></textarea>
 		<button
 			type="submit"

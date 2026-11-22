@@ -9,7 +9,7 @@
 
 {#if visible}
 	<div
-		class="absolute inset-x-0 top-0 z-50 flex items-center justify-center gap-2 px-4 py-2 text-center font-boogaloo text-lg text-cream"
+		class="absolute inset-x-0 top-0 z-50 flex items-center justify-center gap-2 px-4 py-2 text-center font-body text-lg text-cream"
 		class:bg-plum={status.reconnecting}
 		class:bg-curtain-red-dark={!status.reconnecting}
 	>

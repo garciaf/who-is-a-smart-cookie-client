@@ -11,7 +11,7 @@
 		<PlayerCookie class="h-16 w-16 drop-shadow-[0_4px_0_#2e1446]" />
 
 		<!-- Label -->
-		<p class="font-boogaloo text-base tracking-[0.15em] text-lilac uppercase">
+		<p class="font-body text-base tracking-[0.15em] text-lilac uppercase">
 			FROM YOUR HOST
 		</p>
 
@@ -19,7 +19,7 @@
 		<div class="w-full h-px bg-gradient-to-r from-transparent via-plate/40 to-transparent"></div>
 
 		<!-- Message -->
-		<p class="font-boogaloo text-4xl leading-snug text-cream drop-shadow-[0_2px_0_#2e1446] sm:text-5xl">
+		<p class="font-body text-4xl leading-snug text-cream drop-shadow-[0_2px_0_#2e1446] sm:text-5xl">
 			{$loadingMessage.message}
 		</p>
 

@@ -17,14 +17,14 @@
 
 	<!-- Question panel -->
 	<div class="w-full max-w-lg rounded-3xl bg-cream sm:max-w-2xl px-6 py-6 shadow-[0_6px_0_#2e1446]">
-		<p class="mb-3 font-boogaloo text-xl tracking-[0.2em] text-curtain-red uppercase text-center">
+		<p class="mb-3 font-display text-xl tracking-[0.2em] text-curtain-red uppercase text-center">
 			{$questionStore.category} &bull; {$questionStore.difficulty}
 		</p>
-		<p class="font-boogaloo text-3xl leading-snug text-ink text-center">
+		<p class="font-body text-3xl leading-snug text-ink text-center">
 			{$questionStore.text}
 		</p>
 		{#if $questionStore.hasImage}
-			<p class="mt-3 text-center font-boogaloo text-lg tracking-wide text-ink">
+			<p class="mt-3 text-center font-body text-lg tracking-wide text-ink">
 				(Look at the screen!)
 			</p>
 		{/if}

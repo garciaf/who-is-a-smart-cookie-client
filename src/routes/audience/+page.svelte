@@ -45,8 +45,8 @@
 		<!-- Header -->
 		<div class="flex flex-col items-center gap-3 text-center">
 			<PlayerCookie class="h-14 w-14 drop-shadow-[0_4px_0_#2e1446]" />
-			<p class="font-boogaloo text-base tracking-[0.15em] text-lilac uppercase">You're in the audience</p>
-			<p class="font-boogaloo text-2xl text-cream">
+			<p class="font-body text-base tracking-[0.15em] text-lilac uppercase">You're in the audience</p>
+			<p class="font-body text-2xl text-cream">
 				{#if waitingForShow}
 					The show hasn't started yet. Your signs go up once it does!
 				{:else}
@@ -64,7 +64,7 @@
 					type="button"
 					onclick={() => send(preset)}
 					disabled={!canSend}
-					class="toggle rounded-2xl px-3 py-3 font-boogaloo text-lg disabled:opacity-40"
+					class="toggle rounded-2xl px-3 py-3 font-display text-xl disabled:opacity-40"
 				>
 					{preset}
 				</button>
@@ -75,7 +75,7 @@
 
 		<!-- Custom message -->
 		<form onsubmit={submit} class="flex flex-col gap-3">
-			<label for="audience_message" class="text-center font-boogaloo text-xl text-cream">
+			<label for="audience_message" class="text-center font-body text-xl text-cream">
 				WRITE YOUR OWN SIGN
 			</label>
 			<input
@@ -86,7 +86,7 @@
 				maxlength={MAX_LENGTH}
 				placeholder="Type a message…"
 				autocomplete="off"
-				class="w-full rounded-xl border-2 border-plate/60 bg-stage-dark px-5 py-3 font-boogaloo text-xl text-cream placeholder:text-lilac/60 outline-none transition focus:border-plate focus:ring-2 focus:ring-plate/30"
+				class="w-full rounded-xl border-2 border-plate/60 bg-stage-dark px-5 py-3 font-body text-xl text-cream placeholder:text-lilac/60 outline-none transition focus:border-plate focus:ring-2 focus:ring-plate/30"
 			/>
 			<button type="submit" disabled={!message.trim() || !canSend} class="btn">
 				{coolingDown ? 'SIGN IS UP!' : 'SEND'}
@@ -94,7 +94,7 @@
 		</form>
 
 		{#if lastSent}
-			<p class="text-center font-boogaloo text-lg text-cream/80">Last sign: “{lastSent}”</p>
+			<p class="text-center font-body text-lg text-cream/80">Last sign: “{lastSent}”</p>
 		{/if}
 
 	</div>

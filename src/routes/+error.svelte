@@ -7,7 +7,7 @@
 <!-- Content -->
 <div class="relative z-10 flex h-full flex-col items-center justify-center gap-5 px-4 text-center">
 
-	<h1 class="font-boogaloo text-7xl text-title drop-shadow-[0_6px_0_#2e1446] sm:text-8xl">
+	<h1 class="font-body text-7xl text-title drop-shadow-[0_6px_0_#2e1446] sm:text-8xl">
 		{page.status}
 	</h1>
 
@@ -17,15 +17,15 @@
 			<PlayerCookie class="spin-slow relative h-20 w-20" />
 		</div>
 
-		<p class="font-boogaloo text-base tracking-[0.15em] text-lilac uppercase">
+		<p class="font-body text-base tracking-[0.15em] text-lilac uppercase">
 			Error {page.status}
 		</p>
 
-		<h2 class="mt-1 font-boogaloo text-4xl text-ink sm:text-5xl">
+		<h2 class="mt-1 font-body text-4xl text-ink sm:text-5xl">
 			WRONG CHANNEL!
 		</h2>
 
-		<p class="mt-2 font-boogaloo text-xl text-curtain-red">
+		<p class="mt-2 font-body text-xl text-curtain-red">
 			That page doesn't exist, contestant.
 		</p>
 

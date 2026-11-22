@@ -63,10 +63,10 @@
 		</div>
 
 		<div>
-			<p class="mb-1 font-boogaloo text-base tracking-[0.15em] text-lilac uppercase">
+			<p class="mb-1 font-display text-lg tracking-[0.15em] text-lilac uppercase">
 				WELCOME, {$playerStore.name}
 			</p>
-			<p class="font-boogaloo text-3xl text-title drop-shadow-[0_2px_0_#2e1446]">
+			<p class="font-body text-3xl text-title drop-shadow-[0_2px_0_#2e1446]">
 				HOW DO YOU WANT TO JOIN?
 			</p>
 		</div>
@@ -78,16 +78,16 @@
 			{#if !$lobbyStatus.known}
 				<button type="button" disabled class="btn">CHECKING FOR A FREE SPOT…</button>
 			{:else if canPlay}
-				<p class="font-boogaloo text-base tracking-[0.15em] text-lilac uppercase">Pick your cookie</p>
+				<p class="font-body text-base tracking-[0.15em] text-lilac uppercase">Pick your cookie</p>
 				<AvatarPicker bind:value={avatar} taken={$lobbyStatus.takenAvatars} disabled={joining !== null} />
 				<button type="button" onclick={joinAsPlayer} disabled={joining !== null || !avatar} class="btn">
 					{joining === 'player' ? 'JOINING…' : 'PLAY'}
 				</button>
-				<p class="-mt-2 font-boogaloo text-lg text-cream/80">
+				<p class="-mt-2 font-body text-lg text-cream/80">
 					{spotsLeft} player {spotsLeft === 1 ? 'spot' : 'spots'} left
 				</p>
 			{:else}
-				<p class="font-boogaloo text-xl text-cream">
+				<p class="font-body text-xl text-cream">
 					{#if $lobbyStatus.gameStarted}
 						The show has already started!
 					{:else}
@@ -100,7 +100,7 @@
 			<button type="button" onclick={joinAsAudience} disabled={joining !== null} class="btn btn-secondary">
 				{joining === 'audience' ? 'JOINING…' : 'CHEER'}
 			</button>
-			<p class="-mt-2 font-boogaloo text-lg text-cream/80">
+			<p class="-mt-2 font-body text-lg text-cream/80">
 				Sit in the audience and send messages to the big screen
 			</p>
 		</div>

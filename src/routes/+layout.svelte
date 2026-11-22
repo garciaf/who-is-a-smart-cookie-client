@@ -10,7 +10,7 @@
 
 	// The browser tab shows the player's own cookie once they picked one.
 	const icon = $derived(
-		isAvatar($playerStore.avatar) ? avatarUrl($playerStore.avatar) : asset('/images/cookie.svg')
+		isAvatar($playerStore.avatar) ? avatarUrl($playerStore.avatar) : asset('/images/logo.webp')
 	);
 </script>
 
