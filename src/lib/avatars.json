@@ -223,5 +223,40 @@
 		"id": "pistachio_star",
 		"name": "Pistachio Star",
 		"shape": "pistachio_star"
+	},
+	{
+		"id": "candy_cookie",
+		"name": "Candy Cookie",
+		"shape": "candy_cookie"
+	},
+	{
+		"id": "choc_round_pistachio",
+		"name": "Choc Round Pistachio",
+		"shape": "choc_round_pistachio"
+	},
+	{
+		"id": "pignoli",
+		"name": "Pignoli",
+		"shape": "pignoli"
+	},
+	{
+		"id": "choc_square",
+		"name": "Choc Square",
+		"shape": "choc_square"
+	},
+	{
+		"id": "choc_square_white_chips",
+		"name": "Choc Square White Chips",
+		"shape": "choc_square_white_chips"
+	},
+	{
+		"id": "frollino_square",
+		"name": "Frollino Square",
+		"shape": "frollino_square"
+	},
+	{
+		"id": "butter_square_chips",
+		"name": "Butter Square Chips",
+		"shape": "butter_square_chips"
 	}
 ]

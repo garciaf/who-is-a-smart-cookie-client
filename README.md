@@ -238,7 +238,7 @@ The home screen shows the game's logo (`static/images/logo.webp`, exported from 
 
 Each player picks a cookie when joining (`AvatarPicker`), and it then replaces the default cookie icon on every screen (`PlayerCookie`) and in the browser tab. Players on the betting screen show their cookie too.
 
-- Previews: `static/images/avatars/<id>.webp` (160 px, 45 cookies). The list is in `src/lib/avatars.json`.
+- Previews: `static/images/avatars/<id>.webp` (160 px, 52 cookies). The list is in `src/lib/avatars.json`.
 - They are rendered from the game, so they match the big screen exactly. To regenerate them after adding a cookie or glaze colour, run this from the game project: `godot --path . -s res://tools/cookies/render_avatars.gd -- ../who-is-the-smart-cookie-client`
 - Glaze colours of the round, star and square cookies: lilac `#cdb8f2`, pink `#f7a3c0`, sky `#a9d8f5`, mint `#a9e0c4`, lemon `#fbe08a`, white `#fff7ec`, chocolate `#8e5440`, orange `#f9a05a`, strawberry `#f06e6e`, teal `#78d6cd`, lime `#b4e66e`.
 - A player's colour (the dot next to their name) comes from the game: red, blue, green, yellow, orange, violet, teal or magenta.
